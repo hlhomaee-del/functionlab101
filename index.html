@@ -220,6 +220,19 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .bright-card{border-radius:18px;padding:20px;border:2px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);box-shadow:0 12px 35px rgba(0,0,0,.18)}
 .bright-card h4{font-size:18px;margin-bottom:10px;font-weight:900}
 .bright-card p{font-size:16px;color:var(--text2);margin:8px 0}
+
+.job-group{display:grid;grid-template-columns:minmax(0,1fr) 70px minmax(220px,.8fr);gap:14px;align-items:center;margin:18px 0}
+.group-brace{font-family:Georgia,serif;font-size:190px;line-height:.8;color:var(--yellow);text-shadow:0 0 28px rgba(255,215,64,.25);display:flex;align-items:center;justify-content:center}
+.group-label{background:linear-gradient(135deg,rgba(64,224,208,.12),rgba(255,107,157,.09));border:2px solid rgba(64,224,208,.25);border-radius:18px;padding:20px}
+.group-label h4{font-size:19px;font-weight:900;margin-bottom:8px;color:var(--cyan)}
+.group-label p{font-size:16px;color:var(--text2);margin:8px 0}
+.job-step{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);margin:8px 0}
+.job-step-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--blue),var(--purple));font-weight:900;font-size:14px}
+.job-step strong{color:var(--text)}
+.chunk-name{display:inline-block;font-family:var(--mono);font-weight:900;color:#07131f;background:linear-gradient(135deg,var(--cyan),var(--green));border-radius:999px;padding:8px 14px;margin-top:8px}
+.compare-repeat{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+.repeat-arrow{display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--yellow);font-weight:900}
+@media(max-width:780px){.job-group{grid-template-columns:1fr}.group-brace{font-size:80px;transform:rotate(90deg)}.compare-repeat{grid-template-columns:1fr}.repeat-arrow{transform:rotate(90deg)}}
 .peach-card{background:linear-gradient(135deg,rgba(255,171,64,.12),rgba(255,107,157,.08));border-color:rgba(255,171,64,.28)}
 .mint-card{background:linear-gradient(135deg,rgba(78,205,196,.13),rgba(195,232,141,.07));border-color:rgba(78,205,196,.28)}
 .blue-card{background:linear-gradient(135deg,rgba(91,141,238,.15),rgba(64,224,208,.08));border-color:rgba(91,141,238,.32)}
@@ -697,21 +710,75 @@ function cc(lines){return `<div class="ccode">${lines.join('<br>')}</div>`}
 
 function st0(){return`
 <div class="teach purple"><h3>🧩 Why Functions Exist</h3>
-<p>Imagine writing a payroll program for 100 employees. For each employee, the program has to ask for information, calculate pay, calculate tax, and print a paycheck.</p>
-<p style="color:var(--orange);font-weight:900;font-size:19px">Without functions, you repeat the same logic again and again. If the tax calculation has a bug, you may have to fix the same mistake in many copied sections.</p>
-<p>With functions, you write one clear task once and call it whenever the program needs that task.</p>
+<p>First, do not think about <code>def</code>, parentheses, or parameters yet. Start with the real goal.</p>
+<div class="bright-card blue-card" style="margin-top:16px"><h4>Goal: make a tiny greeting program</h4>
+<p>We want Python to do this simple job:</p>
+<div class="mini-flow"><span class="flow-pill">Ask for a name</span><span class="flow-arrow">→</span><span class="flow-pill">Ask for birth year</span><span class="flow-arrow">→</span><span class="flow-pill">Calculate age</span><span class="flow-arrow">→</span><span class="flow-pill">Display greeting</span></div>
+<p style="margin-top:12px">So the first question is not “What is the function?” The first question is: <strong>What are we trying to make the program do?</strong></p></div>
 </div>
 
-<div class="teach green"><h3>💡 What is a function?</h3>
-<p>A <strong>function</strong> is a named group of instructions that does one job. You define it once, then call it when you want Python to run it.</p>
-<div class="soft-grid">
-  <div class="bright-card peach-card"><h4>Without a function</h4>
-  ${cS(['name = input("Name? ")','year = int(input("Year? "))','age = 2025 - year','print("Hello " + name + "! Age: " + str(age))','','# Later, the same kind of code appears again...','name = input("Name? ")','year = int(input("Year? "))','age = 2025 - year','print("Hello " + name + "! Age: " + str(age))'])}
-  <p>The program works, but the same thinking is copied again.</p></div>
-  <div class="bright-card mint-card"><h4>With functions</h4>
-  ${cc(['<span class="cc-call">get_name</span><span class="cc-par">()</span>','<span class="cc-call">get_birth_year</span><span class="cc-par">()</span>','<span class="cc-call">calculate_age</span><span class="cc-par">()</span>','<span class="cc-call">display_greeting</span><span class="cc-par">()</span>'])}
-  <p>The function name becomes a shortcut for a group of instructions.</p></div>
+<div class="teach green"><h3>🪜 Building Block 1: See the steps before the function</h3>
+<p>Here is the program with no functions yet. These are just normal Python lines.</p>
+<div class="job-group">
+  <div>
+    ${cc(['name = <span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Name? "</span><span class="cc-par">)</span>','year = <span class="cc-in">int</span><span class="cc-par">(</span><span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Year? "</span><span class="cc-par">))</span>','age = 2025 - year','<span class="cc-pr">print</span><span class="cc-par">(</span><span class="cc-str">"Hello "</span> + name + <span class="cc-str">"! Age: "</span> + <span class="cc-in">str</span><span class="cc-par">(</span>age<span class="cc-par">))</span>'])}
+  </div>
+  <div class="group-brace">}</div>
+  <div class="group-label">
+    <h4>The brace is grouping the lines.</h4>
+    <p>All four lines work together to complete one larger job:</p>
+    <p><strong>make a greeting for the user.</strong></p>
+    <p>Later, a function lets us give this whole grouped job one name.</p>
+    <span class="chunk-name">make_greeting</span>
+  </div>
 </div>
+<div class="warning-card"><h4>Plain English first</h4><p>A function is not magic. It is a way to take a group of instructions and give that group a name so we can use it again later.</p></div>
+</div>
+
+${Q('s0brace','What is the grouping brace showing in this example?', ['The four lines work together as one larger job','Only the first line matters','The program already has a function','Python will ignore the lines inside the brace'],0,
+  ['Correct. The brace is a visual tool. It shows that the lines belong together because they complete one larger job.','The first line matters, but it is only one step. The greeting also needs the birth year, age calculation, and final display.','Not yet. These are still ordinary Python lines. We are only preparing to understand why a function would be useful.','Python would not ignore these lines. The brace is only a teaching visual, not actual Python syntax.'],
+  'Before naming a function, first recognize which lines belong together and what job they complete.')}
+
+<div class="teach blue"><h3>🔍 Building Block 2: Name the job, not the syntax</h3>
+<p>Once you see the grouped job, you can give the job a clear name. At this stage, we are naming the job only. We are not writing the full function yet.</p>
+<div class="soft-grid">
+  <div class="bright-card peach-card"><h4>One small job</h4><p>Ask the user for a name.</p>${cc(['name = <span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Name? "</span><span class="cc-par">)</span>'])}</div>
+  <div class="bright-card mint-card"><h4>A good job name</h4><p><span class="name-example">get_name</span></p><p>Use this pattern:</p><p><strong>verb + underscore + thing</strong></p><p><code>get</code> is the action. <code>name</code> is the thing.</p></div>
+</div>
+<div class="soft-grid">
+  <div class="bright-card gold-card"><h4>More examples</h4><p>Ask for birth year → <span class="name-example">get_birth_year</span></p><p>Calculate age → <span class="name-example">calculate_age</span></p><p>Display greeting → <span class="name-example">display_greeting</span></p></div>
+  <div class="bright-card purple-card"><h4>Why verbs?</h4><p>A function does an action, so the name usually starts with an action word: <strong>get</strong>, <strong>ask</strong>, <strong>calculate</strong>, <strong>display</strong>, <strong>check</strong>, or <strong>convert</strong>.</p></div>
+</div>
+</div>
+
+${Q('s0namebridge','Which name best describes the job: ask the user for a name?', ['name','get_name','function_one','person'],1,
+  ['<code>name</code> names the thing, but it does not show the action. A function name is clearer when it starts with a verb.','Correct. <code>get_name</code> shows both the action and the thing: get + name.','<code>function_one</code> tells us it is a function, but it does not tell us what job it does.','<code>person</code> is too broad. The job is specifically getting the name.'],
+  'Use the pattern: action verb + underscore + the thing being handled.')}
+
+<div class="teach blue"><h3>🔁 Building Block 3: Why grouping helps when code repeats</h3>
+<p>For one greeting, the four lines are fine. But if the same grouped job is needed again, copying the whole group becomes messy.</p>
+<div class="compare-repeat">
+  <div class="bright-card peach-card"><h4>First time</h4>${cc(['name = <span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Name? "</span><span class="cc-par">)</span>','year = <span class="cc-in">int</span><span class="cc-par">(</span><span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Year? "</span><span class="cc-par">))</span>','age = 2025 - year','<span class="cc-pr">print</span><span class="cc-par">(</span><span class="cc-str">"Hello "</span> + name + <span class="cc-str">"! Age: "</span> + <span class="cc-in">str</span><span class="cc-par">(</span>age<span class="cc-par">))</span>'])}</div>
+  <div class="bright-card peach-card"><h4>Second time</h4>${cc(['name = <span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Name? "</span><span class="cc-par">)</span>','year = <span class="cc-in">int</span><span class="cc-par">(</span><span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Year? "</span><span class="cc-par">))</span>','age = 2025 - year','<span class="cc-pr">print</span><span class="cc-par">(</span><span class="cc-str">"Hello "</span> + name + <span class="cc-str">"! Age: "</span> + <span class="cc-in">str</span><span class="cc-par">(</span>age<span class="cc-par">))</span>'])}</div>
+</div>
+<div class="job-group">
+  <div class="bright-card mint-card"><h4>What repeats?</h4>
+    <div class="job-step"><div class="job-step-num">1</div><div><strong>get name</strong></div></div>
+    <div class="job-step"><div class="job-step-num">2</div><div><strong>get birth year</strong></div></div>
+    <div class="job-step"><div class="job-step-num">3</div><div><strong>calculate age</strong></div></div>
+    <div class="job-step"><div class="job-step-num">4</div><div><strong>display greeting</strong></div></div>
+  </div>
+  <div class="group-brace">}</div>
+  <div class="group-label"><h4>Function idea</h4><p>Instead of copying this grouped logic again and again, we can eventually define a function and call it when needed.</p><p><strong>Group the lines → name the job → build the function.</strong></p></div>
+</div>
+</div>
+
+${Q('s0repeatreason','Why would functions help if the greeting steps are needed for many people?', ['They let us group repeated logic, name it, and reuse it','They remove the need for variables','They make Python automatically guess the user’s age','They make every program shorter even when nothing repeats'],0,
+  ['Correct. That is the core reason: group the repeated instructions, give the group a useful name, and reuse it.','Variables are still needed. Functions organize instructions; variables store values.','Python cannot guess the user’s age. The program still needs the birth year and a calculation.','Functions are most useful when they organize a clear job or avoid repeated logic. They are not magic shortening tools.'],
+  'The main idea is reuse: one named job can be used more than once.')}
+
+<div class="teach orange"><h3>🛠️ Building Block 3: Define vs. Call</h3>
+<p>Once a job has a name, Python needs two separate moments: define the function, then call the function.</p>
 <div class="soft-grid">
   <div class="bright-card blue-card"><h4>Define = create the tool</h4>${cc(['<span class="cc-def">def</span> <span class="cc-fn">say_hello</span><span class="cc-par">()</span><span class="cc-col">:</span>','<span class="body-line">    <span class="cc-pr">print</span><span class="cc-par">(</span><span class="cc-str">"Hello"</span><span class="cc-par">)</span></span>'])}<p>This teaches Python that a function named <code>say_hello</code> exists. It does not run yet.</p></div>
   <div class="bright-card purple-card"><h4>Call = use the tool</h4>${cc(['<span class="cc-call">say_hello</span><span class="cc-par">()</span>'])}<p>This runs the function. Python jumps back to the definition and performs the indented instruction.</p></div>
@@ -755,7 +822,7 @@ ${Q('s0bridge','Why are we about to practice naming small function jobs?',
 </div>
 
 <div class="teach green"><h3>✍️ Practice: Name each small job</h3>
-<p>Read the task and type a clear function name. Do not type <code>def</code>. Do not type parentheses. Just choose the name.</p>
+<p>Read the task and type a clear function name. Do not type <code>def</code>. Do not type parentheses. Just choose the name. The answer box will not show a sample answer.</p>
 ${cS(['# Task A: Ask the user for their name','name = input("Name? ")','','# Task B: Ask for birth year','year = int(input("Year? "))','','# Task C: Calculate age','age = 2025 - year','','# Task D: Display a greeting','print("Hello " + name + "! Age: " + str(age))'])}
 ${nameTask('A','Ask the user for their name','name = input("Name? ")','fnA')}
 ${nameTask('B','Ask for birth year','year = int(input("Year? "))','fnB')}
@@ -768,7 +835,7 @@ ${legend()}</div>
 `}
 
 function verbCard(title,when,ex1,ex2){return `<div class="flip-card" onclick="flipVerb(this)"><div class="flip-inner"><div class="flip-front"><h4>${title}</h4><p style="font-size:13px;color:var(--text2);margin-top:8px">Click to flip</p></div><div class="flip-back"><p>${when}</p><p><code>${ex1}</code></p><p><code>${ex2}</code></p></div></div></div>`}
-function nameTask(letter,title,code,id){return `<div class="task-card" id="card-${id}"><div class="task-head"><span class="task-badge">Task ${letter}</span><strong>${title}</strong></div><div class="ccode" style="font-size:15px;padding:14px">${escHTML(code)}</div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><input class="ii" id="${id}" placeholder="example: get_name" style="min-width:220px"><button class="btn btn-sm btn-blue" onclick="ckNameTask('${id}')">Check</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',1)">Hint 1</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',2)">Hint 2</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',3)">Hint 3</button><button class="btn btn-sm btn-pink" id="${id}-reveal" onclick="revealNameTask('${id}')" disabled>Reveal Answer</button></div><div id="${id}-hint"></div><div id="${id}-fb"></div></div>`}
+function nameTask(letter,title,code,id){return `<div class="task-card" id="card-${id}"><div class="task-head"><span class="task-badge">Task ${letter}</span><strong>${title}</strong></div><div class="ccode" style="font-size:15px;padding:14px">${escHTML(code)}</div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><input class="ii" id="${id}" placeholder="Type your function name" style="min-width:220px"><button class="btn btn-sm btn-blue" onclick="ckNameTask('${id}')">Check</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',1)">Hint 1</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',2)">Hint 2</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',3)">Hint 3</button><button class="btn btn-sm btn-pink" id="${id}-reveal" onclick="revealNameTask('${id}')" disabled>Reveal Answer</button></div><div id="${id}-hint"></div><div id="${id}-fb"></div></div>`}
 
 const NAME_TASKS={
  fnA:{tries:0,hints:{},ans:'get_name',ok:['get_name','ask_name','collect_name','get_user_name','ask_user_name'],h:['Look at the action: the code asks the user for something.','A good verb could be get, ask, or collect.','The thing being collected is the user’s name.'],good:'Correct. This function asks for or gets the user’s name. Empty parentheses will be okay later because the function uses input() inside; it does not need outside information.'},
