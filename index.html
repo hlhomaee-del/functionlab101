@@ -242,17 +242,45 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .mini-flow{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:18px 0}
 .flow-pill{font-family:var(--mono);font-weight:900;border-radius:999px;padding:10px 16px;background:rgba(64,224,208,.1);border:2px solid rgba(64,224,208,.3);color:var(--cyan)}
 .flow-arrow{font-size:25px;color:var(--yellow);font-weight:900}
+.story-flow{display:flex;align-items:stretch;justify-content:center;gap:12px;flex-wrap:wrap;margin:22px 0}
+.story-step{min-width:155px;flex:1 1 155px;max-width:210px;border-radius:18px;padding:16px 14px;text-align:center;font-weight:900;color:#fff;border:2px solid rgba(255,255,255,.22);box-shadow:0 12px 30px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.16);opacity:0;transform:translateY(14px) scale(.96);animation:storyPop .7s ease forwards}
+.story-step small{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px;opacity:.9}
+.story-step b{display:block;font-size:18px;line-height:1.25}
+.story-step:nth-child(1){background:linear-gradient(135deg,rgba(59,120,255,.52),rgba(50,221,194,.30));animation-delay:.1s}
+.story-step:nth-child(3){background:linear-gradient(135deg,rgba(255,118,82,.54),rgba(255,210,79,.30));animation-delay:.55s}
+.story-step:nth-child(5){background:linear-gradient(135deg,rgba(255,85,165,.52),rgba(145,116,255,.28));animation-delay:1s}
+.story-step:nth-child(7){background:linear-gradient(135deg,rgba(104,218,121,.48),rgba(58,191,224,.28));animation-delay:1.45s}
+.story-connector{display:flex;align-items:center;justify-content:center;color:var(--yellow);font-size:24px;font-weight:900;opacity:0;animation:storyArrow .55s ease forwards}
+.story-connector:nth-child(2){animation-delay:.42s}.story-connector:nth-child(4){animation-delay:.87s}.story-connector:nth-child(6){animation-delay:1.32s}
+@keyframes storyPop{to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes storyArrow{to{opacity:1;transform:translateX(0)}}
+
 .name-formula{background:linear-gradient(135deg,rgba(255,215,64,.12),rgba(255,171,64,.1));border:2px solid rgba(255,215,64,.3);border-radius:18px;padding:20px;margin:20px 0}
 .name-example{font-family:var(--mono);display:inline-block;background:rgba(91,141,238,.13);border:1px solid rgba(91,141,238,.28);border-radius:10px;padding:6px 10px;margin:5px;color:#dbe7ff;font-weight:800}
-.flip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0}
-.flip-card{min-height:150px;perspective:1000px;cursor:pointer}
-.flip-inner{position:relative;width:100%;min-height:150px;transition:transform .55s;transform-style:preserve-3d}
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:20px 0;align-items:stretch}
+.flip-card{min-height:240px;perspective:1200px;cursor:pointer}
+.flip-inner{position:relative;width:100%;min-height:240px;transition:transform .65s;transform-style:preserve-3d}
 .flip-card.flipped .flip-inner{transform:rotateY(180deg)}
-.flip-front,.flip-back{position:absolute;inset:0;border-radius:18px;padding:18px;backface-visibility:hidden;border:2px solid rgba(255,255,255,.15);display:flex;flex-direction:column;justify-content:center}
-.flip-front{background:linear-gradient(135deg,rgba(91,141,238,.22),rgba(155,109,255,.13));text-align:center}
-.flip-front h4{font-size:19px;color:#fff}
-.flip-back{transform:rotateY(180deg);background:linear-gradient(135deg,rgba(78,205,196,.16),rgba(255,215,64,.08));font-size:14px;color:var(--text2)}
-.flip-back code{color:var(--yellow)}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:22px;padding:18px;backface-visibility:hidden;border:2px solid rgba(255,255,255,.22);display:flex;flex-direction:column;align-items:center;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.16);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.flip-front{justify-content:center;text-align:center}
+.flip-front h4{font-size:17px;line-height:1.35;color:#ffffff;font-weight:900;letter-spacing:.2px;text-shadow:0 1px 2px rgba(0,0,0,.16);margin:0;max-width:100%;word-break:break-word}
+.flip-back{transform:rotateY(180deg);justify-content:flex-start;text-align:left;font-size:14px;line-height:1.45;color:#f7fbff;padding-top:16px}
+.flip-back p{margin:0 0 8px 0;width:100%}
+.flip-back code{display:block;width:100%;color:#fff7cf;background:rgba(10,15,32,.24);border:1px solid rgba(255,255,255,.16);padding:8px 10px;border-radius:12px;white-space:normal;overflow-wrap:anywhere;font-size:12.5px;line-height:1.35;font-weight:800}
+.verb-card .verb-kicker{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:5px 10px;font-size:11px;letter-spacing:.7px;text-transform:uppercase;font-weight:900;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);margin-bottom:12px}
+.verb-card .tap-note{font-size:12px;color:#f1f5ff;margin-top:14px;font-weight:800;opacity:.95}
+.verb-card .verb-when{font-weight:900;color:#ffffff;font-size:14px;line-height:1.4;margin-bottom:10px}
+.verb-card .verb-label{width:100%;font-size:11px;text-transform:uppercase;letter-spacing:.7px;font-weight:900;color:#f9fbff;opacity:.86;margin:2px 0 8px 0}
+.verb-a .flip-front{background:linear-gradient(135deg,rgba(59,120,255,.52),rgba(50,221,194,.30))}
+.verb-a .flip-back{background:linear-gradient(135deg,rgba(68,145,255,.35),rgba(88,226,204,.24))}
+.verb-b .flip-front{background:linear-gradient(135deg,rgba(255,118,82,.54),rgba(255,210,79,.30))}
+.verb-b .flip-back{background:linear-gradient(135deg,rgba(255,137,96,.36),rgba(255,224,116,.24))}
+.verb-c .flip-front{background:linear-gradient(135deg,rgba(255,85,165,.52),rgba(145,116,255,.28))}
+.verb-c .flip-back{background:linear-gradient(135deg,rgba(255,122,182,.35),rgba(170,141,255,.22))}
+.verb-d .flip-front{background:linear-gradient(135deg,rgba(104,218,121,.48),rgba(58,191,224,.28))}
+.verb-d .flip-back{background:linear-gradient(135deg,rgba(129,232,151,.30),rgba(84,205,230,.22))}
+.verb-e .flip-front{background:linear-gradient(135deg,rgba(255,165,84,.50),rgba(255,116,173,.28))}
+.verb-e .flip-back{background:linear-gradient(135deg,rgba(255,191,117,.30),rgba(255,144,190,.22))}
 .task-card{background:rgba(255,255,255,.035);border:2px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;margin:16px 0}
 .task-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
 .task-badge{background:rgba(91,141,238,.16);border:1px solid rgba(91,141,238,.35);color:#dbe7ff;border-radius:999px;padding:6px 12px;font-weight:900;font-size:13px}
@@ -264,7 +292,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .decision-box{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:20px 0}
 .small-label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);font-weight:900;margin-bottom:8px}
 
-@media(max-width:640px){.sgrid{grid-template-columns:1fr}.wrap,.wrap-wide{padding:0 16px}.phase-card,.challenge{padding:28px}.output-label-row{justify-content:center;padding-right:0}.flow-row{justify-content:center}.monitor{width:100%}.flip-card,.flip-inner{min-height:190px}}
+@media(max-width:640px){.sgrid{grid-template-columns:1fr}.wrap,.wrap-wide{padding:0 16px}.phase-card,.challenge{padding:28px}.output-label-row{justify-content:center;padding-right:0}.flow-row{justify-content:center}.monitor{width:100%}.flip-card,.flip-inner{min-height:250px}}
 </style>
 </head>
 <body>
@@ -710,15 +738,22 @@ function cc(lines){return `<div class="ccode">${lines.join('<br>')}</div>`}
 
 function st0(){return`
 <div class="teach purple"><h3>🧩 Why Functions Exist</h3>
-<p>First, do not think about <code>def</code>, parentheses, or parameters yet. Start with the real goal.</p>
-<div class="bright-card blue-card" style="margin-top:16px"><h4>Goal: make a tiny greeting program</h4>
-<p>We want Python to do this simple job:</p>
-<div class="mini-flow"><span class="flow-pill">Ask for a name</span><span class="flow-arrow">→</span><span class="flow-pill">Ask for birth year</span><span class="flow-arrow">→</span><span class="flow-pill">Calculate age</span><span class="flow-arrow">→</span><span class="flow-pill">Display greeting</span></div>
-<p style="margin-top:12px">So the first question is not “What is the function?” The first question is: <strong>What are we trying to make the program do?</strong></p></div>
+<div class="bright-card blue-card" style="margin-top:16px"><h4>We are building one tiny greeting program</h4>
+<p>We want Python to complete four small jobs in order.</p>
+<div class="story-flow">
+  <div class="story-step"><small>Step 1</small><b>Ask for a name</b></div>
+  <div class="story-connector">→</div>
+  <div class="story-step"><small>Step 2</small><b>Ask for birth year</b></div>
+  <div class="story-connector">→</div>
+  <div class="story-step"><small>Step 3</small><b>Calculate age</b></div>
+  <div class="story-connector">→</div>
+  <div class="story-step"><small>Step 4</small><b>Display a greeting</b></div>
+</div>
+<p style="margin-top:12px">Each step is simple by itself. Together, the steps make one useful program.</p></div>
 </div>
 
-<div class="teach green"><h3>🪜 Building Block 1: See the steps before the function</h3>
-<p>Here is the program with no functions yet. These are just normal Python lines.</p>
+<div class="teach green"><h3>🪜 Building Block 1: Turn the goal into steps</h3>
+<p>Now we turn the four jobs into Python lines. Read them as a sequence: ask, ask, calculate, display.</p>
 <div class="job-group">
   <div>
     ${cc(['name = <span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Name? "</span><span class="cc-par">)</span>','year = <span class="cc-in">int</span><span class="cc-par">(</span><span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Year? "</span><span class="cc-par">))</span>','age = 2025 - year','<span class="cc-pr">print</span><span class="cc-par">(</span><span class="cc-str">"Hello "</span> + name + <span class="cc-str">"! Age: "</span> + <span class="cc-in">str</span><span class="cc-par">(</span>age<span class="cc-par">))</span>'])}
@@ -728,19 +763,19 @@ function st0(){return`
     <h4>The brace is grouping the lines.</h4>
     <p>All four lines work together to complete one larger job:</p>
     <p><strong>make a greeting for the user.</strong></p>
-    <p>Later, a function lets us give this whole grouped job one name.</p>
+    <p>When several lines belong to one job, it helps to give that job one clear name.</p>
     <span class="chunk-name">make_greeting</span>
   </div>
 </div>
-<div class="warning-card"><h4>Plain English first</h4><p>A function is not magic. It is a way to take a group of instructions and give that group a name so we can use it again later.</p></div>
+<div class="warning-card"><h4>Plain English first</h4><p>This is the big idea: several instructions can work together as one named job. That named job is what we call a function.</p></div>
 </div>
 
 ${Q('s0brace','What is the grouping brace showing in this example?', ['The four lines work together as one larger job','Only the first line matters','The program already has a function','Python will ignore the lines inside the brace'],0,
-  ['Correct. The brace is a visual tool. It shows that the lines belong together because they complete one larger job.','The first line matters, but it is only one step. The greeting also needs the birth year, age calculation, and final display.','Not yet. These are still ordinary Python lines. We are only preparing to understand why a function would be useful.','Python would not ignore these lines. The brace is only a teaching visual, not actual Python syntax.'],
-  'Before naming a function, first recognize which lines belong together and what job they complete.')}
+  ['Correct. The brace is a visual tool. It shows that the lines belong together because they complete one larger job.','The first line matters, but it is only one step. The greeting also needs the birth year, age calculation, and final display.','The brace is only grouping the job visually. The actual function structure comes after the job is clear.','Python would not ignore these lines. The brace is only a teaching visual, not actual Python syntax.'],
+  'First recognize which lines belong together and what job they complete.')}
 
-<div class="teach blue"><h3>🔍 Building Block 2: Name the job, not the syntax</h3>
-<p>Once you see the grouped job, you can give the job a clear name. At this stage, we are naming the job only. We are not writing the full function yet.</p>
+<div class="teach blue"><h3>🔍 Building Block 2: Give each job a clear name</h3>
+<p>Once you see a job clearly, give it a name that tells what it does.</p>
 <div class="soft-grid">
   <div class="bright-card peach-card"><h4>One small job</h4><p>Ask the user for a name.</p>${cc(['name = <span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Name? "</span><span class="cc-par">)</span>'])}</div>
   <div class="bright-card mint-card"><h4>A good job name</h4><p><span class="name-example">get_name</span></p><p>Use this pattern:</p><p><strong>verb + underscore + thing</strong></p><p><code>get</code> is the action. <code>name</code> is the thing.</p></div>
@@ -799,17 +834,17 @@ ${cc(['<span class="cc-def">def</span> <span class="cc-fn">say_hello</span><span
 <div class="warning-card"><h4>Important</h4><p>A parameter is <strong>not</strong> the same thing as <code>input()</code>. <code>input()</code> asks the user. A parameter receives a value when the function is called.</p>${cc(['birth_year = <span class="cc-arg">1990</span>','age = <span class="cc-call">calculate_age</span><span class="cc-par">(</span>birth_year<span class="cc-par">)</span>','','# Inside the function, Python temporarily treats it like:','<span class="cc-param">year</span> = <span class="cc-arg">1990</span>'])}</div>
 </div>
 
-${Q('s0bridge','Why are we about to practice naming small function jobs?',
+${Q('s0bridge','Why is it helpful to name a small job in a program?',
   ['Because Python requires every program to have exactly four functions','Because a function name should quickly tell us what job that chunk of code does','Because function names replace variables','Because longer names always make code run faster'],1,
-  ['Python does not require exactly four functions. The number depends on the program.','Correct. Before writing full function structure, we first learn to recognize the job and give that job a clear name.','Functions do not replace variables. Variables store values; functions store reusable instructions.','Name length does not make code faster. The purpose is readability and organization.'],
-  'This is the segue: first identify the job, then name the job, then later build the full function structure around that name.')}
+  ['Python does not require exactly four functions. The number depends on the program.','Correct. Correct. A clear name tells us what the grouped lines are trying to do.','Functions do not replace variables. Variables store values; functions store reusable instructions.','Name length does not make code faster. The purpose is readability and organization.'],
+  'Identify the job, then give that job a clear action name.')}
 
 <div class="teach blue"><h3>🧠 Function Name Formula</h3>
 <div class="name-formula"><p style="font-size:20px;color:var(--text);font-weight:900;margin-bottom:8px">Choose a verb + the thing the task works with.</p><p style="margin:0">Use lowercase words joined with an underscore: <span class="name-example">get_name</span> <span class="name-example">calculate_age</span> <span class="name-example">display_greeting</span></p></div>
-<p>A function name should describe the job. Use a verb because the function does something. For this first practice, type only the <strong>function name</strong>, not <code>def</code> and not parentheses.</p>
+<p>A function name should describe the job. Use a verb because the function does something. For this first practice, look at the job and choose a clear name for that job.</p>
 <div class="soft-grid">
   <div class="bright-card peach-card"><h4>Sample</h4><p>Task: Ask the user for an email address.</p><p>Good function name: <span class="name-example">get_email</span></p><p>Also okay: <span class="name-example">ask_email</span> <span class="name-example">collect_email</span></p></div>
-  <div class="bright-card mint-card"><h4>Why this helps</h4><p>Once the job has a clear name, we can later build the full function around it.</p><p><strong>Name first. Full anatomy second.</strong></p></div>
+  <div class="bright-card mint-card"><h4>Why this helps</h4><p>A clear job name makes the program easier to read and easier to reuse.</p><p><strong>A clear name helps us organize the program.</strong></p></div>
 </div>
 <h4 style="margin-top:18px;color:var(--yellow)">Click the verb bank</h4>
 <div class="flip-grid">
@@ -822,7 +857,7 @@ ${Q('s0bridge','Why are we about to practice naming small function jobs?',
 </div>
 
 <div class="teach green"><h3>✍️ Practice: Name each small job</h3>
-<p>Read the task and type a clear function name. Do not type <code>def</code>. Do not type parentheses. Just choose the name. The answer box will not show a sample answer.</p>
+<p>Read each task and choose a clear name for that small job. The answer box will not show a sample answer.</p>
 ${cS(['# Task A: Ask the user for their name','name = input("Name? ")','','# Task B: Ask for birth year','year = int(input("Year? "))','','# Task C: Calculate age','age = 2025 - year','','# Task D: Display a greeting','print("Hello " + name + "! Age: " + str(age))'])}
 ${nameTask('A','Ask the user for their name','name = input("Name? ")','fnA')}
 ${nameTask('B','Ask for birth year','year = int(input("Year? "))','fnB')}
@@ -834,8 +869,9 @@ ${legend()}</div>
 </div>
 `}
 
-function verbCard(title,when,ex1,ex2){return `<div class="flip-card" onclick="flipVerb(this)"><div class="flip-inner"><div class="flip-front"><h4>${title}</h4><p style="font-size:13px;color:var(--text2);margin-top:8px">Click to flip</p></div><div class="flip-back"><p>${when}</p><p><code>${ex1}</code></p><p><code>${ex2}</code></p></div></div></div>`}
-function nameTask(letter,title,code,id){return `<div class="task-card" id="card-${id}"><div class="task-head"><span class="task-badge">Task ${letter}</span><strong>${title}</strong></div><div class="ccode" style="font-size:15px;padding:14px">${escHTML(code)}</div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><input class="ii" id="${id}" placeholder="Type your function name" style="min-width:220px"><button class="btn btn-sm btn-blue" onclick="ckNameTask('${id}')">Check</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',1)">Hint 1</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',2)">Hint 2</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',3)">Hint 3</button><button class="btn btn-sm btn-pink" id="${id}-reveal" onclick="revealNameTask('${id}')" disabled>Reveal Answer</button></div><div id="${id}-hint"></div><div id="${id}-fb"></div></div>`}
+function verbClassFor(title){if(title.startsWith('GET'))return 'verb-a';if(title.startsWith('CALCULATE'))return 'verb-b';if(title.startsWith('SHOW'))return 'verb-c';if(title.startsWith('CHECK'))return 'verb-d';return 'verb-e'}
+function verbCard(title,when,ex1,ex2){const cls=verbClassFor(title);return `<div class="flip-card verb-card ${cls}" onclick="flipVerb(this)"><div class="flip-inner"><div class="flip-front"><div class="verb-kicker">Verb bank</div><h4>${title}</h4><p class="tap-note">Click to flip</p></div><div class="flip-back"><p class="verb-when">${when}</p><div class="verb-label">Examples</div><code>${ex1}</code><code>${ex2}</code></div></div></div>`}
+function nameTask(letter,title,code,id){return `<div class="task-card" id="card-${id}"><div class="task-head"><span class="task-badge">Task ${letter}</span><strong>${title}</strong></div><div class="ccode" style="font-size:15px;padding:14px">${escHTML(code)}</div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><input class="ii" id="${id}" placeholder="Type a clear job name" style="min-width:220px"><button class="btn btn-sm btn-blue" onclick="ckNameTask('${id}')">Check</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',1)">Hint 1</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',2)">Hint 2</button><button class="btn btn-sm btn-ghost" onclick="showNameHint('${id}',3)">Hint 3</button><button class="btn btn-sm btn-pink" id="${id}-reveal" onclick="revealNameTask('${id}')" disabled>Reveal Answer</button></div><div id="${id}-hint"></div><div id="${id}-fb"></div></div>`}
 
 const NAME_TASKS={
  fnA:{tries:0,hints:{},ans:'get_name',ok:['get_name','ask_name','collect_name','get_user_name','ask_user_name'],h:['Look at the action: the code asks the user for something.','A good verb could be get, ask, or collect.','The thing being collected is the user’s name.'],good:'Correct. This function asks for or gets the user’s name. Empty parentheses will be okay later because the function uses input() inside; it does not need outside information.'},
@@ -847,7 +883,7 @@ function normName(v){return v.trim().toLowerCase().replace(/^def\s+/,'').replace
 function ckNameTask(id){const t=NAME_TASKS[id],inp=document.getElementById(id),fb=document.getElementById(id+'-fb');let v=normName(inp.value);t.tries++;
  document.getElementById(id+'-reveal').disabled=!(t.tries>=3||Object.keys(t.hints).length>=3);
  if(!v){fb.innerHTML='<div class="hint-box" style="border-color:rgba(255,138,80,.35)">Type a function name first. Example format: <code>verb_thing</code>.</div>';return}
- if(v.includes('(')||v.includes(')')||v.startsWith('def')){fb.innerHTML='<div class="hint-box">For this practice, type only the name, such as <code>get_name</code>. Do not type <code>def</code> or parentheses yet.</div>';return}
+ if(v.includes('(')||v.includes(')')||v.startsWith('def')){fb.innerHTML='<div class="hint-box">Use a simple job name here, such as two lowercase words joined by an underscore.</div>';return}
  if(/^\d/.test(v)){fb.innerHTML='<div class="hint-box" style="border-color:rgba(255,82,82,.35)">A function name cannot start with a number. Start with an action word.</div>';return}
  if(t.ok.includes(v)){inp.classList.add('iok');fb.innerHTML=`<div class="qfb qok"><strong>✓ Correct.</strong> ${t.good}</div>`;addXP(5);checkAllNameTasks();return}
  const startsVerb=/^(get|ask|collect|calculate|calc|compute|find|show|display|print|check|validate|confirm|convert|format)/.test(v);
