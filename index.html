@@ -332,7 +332,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   font-size:31px;
   line-height:1.1;
   font-weight:900;
-  color:#00e5ff;
+  color:#4ecdc4;
   background:rgba(3,7,18,.34);
   border:1px solid rgba(255,255,255,.18);
   border-radius:16px;
@@ -408,14 +408,9 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .built-set .flip-back{background:linear-gradient(135deg,rgba(251,113,133,.29),rgba(34,197,94,.15))}
 
 
-/* Built-in function card title color fix */
-.built-title{
-  color:#00e5ff!important;
-  text-shadow:0 0 14px rgba(0,229,255,.45),0 2px 4px rgba(0,0,0,.38)!important;
-}
-.built-card .flip-front h4.built-title{
-  color:#00e5ff!important;
-}
+.compact-output .output-label-row{justify-content:flex-start;padding-right:0;margin:10px 0 8px 0}
+.compact-output .monitor-wrap{width:100%;min-width:0}
+.compact-output .monitor{width:100%;min-width:0}
 
 </style>
 </head>
@@ -502,6 +497,19 @@ function hl(t){
 function cS(ls){return`<div class="code">${ls.map((l,i)=>`<span class="line"><span class="ln">${i+1}</span>${hl(l||' ')}</span>`).join('\n')}</div>`}
 
 function escHTML(v){return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function simpleOutputDemo(codeLines, output, label='Python output'){
+  const isError = /Error|Traceback|invalid syntax|not defined/i.test(output);
+  let value;
+  if(isError){
+    value = `<span class="screen-error">${escHTML(output)}</span>`;
+  } else {
+    const lines = String(output).split(/\n/).map(line=>`<span class="screen-line">${escHTML(line)}</span>`).join('');
+    value = `<span class="screen-value">${lines}</span>`;
+  }
+  return `<div class="output-demo compact-output">${cS(codeLines)}<div class="output-label-row"><div class="screen-label">${escHTML(label)}</div></div><div class="monitor-wrap"><div class="monitor">${value}</div></div></div>`;
+}
+
 function outputDemo(codeLines, output, label='This is what your screen will display'){
   const isError = /Error|Traceback|invalid syntax|not defined/i.test(output);
   let value;
@@ -886,6 +894,7 @@ function pQ(id,sel){
 }
 
 // ══════════════════════════════════════
+// OUTPUT DESIGN RULE: use outputDemo(...) for visible Python output instead of inline # shows comments.
 // STATION CONTENT (Discovery-first)
 // ══════════════════════════════════════
 function getStation(i){return[st0,st1,st2,st3,st4,st5,st6,st7,st8,st9,st10,st11][i]()}
@@ -1236,32 +1245,107 @@ else fb.innerHTML=`<div class="qfb qno"><strong>Keep checking the structure.</st
 
 function st2(){return`
 <div class="teach purple"><h3>🤔 Prediction: What will this print?</h3>
-<p>Don't read ahead; just look at the code and make your best guess:</p>
+<p>Look at the code and predict the screen output before you answer.</p>
 ${cS(['def add(a, b):','    print(a + b)','','result = add(2, 3)','print("result is:", result)'])}
 </div>
 ${Q('s2pred','What will appear on the screen?',
   ['Just the number 5','5 and then "result is: 5"','5 and then "result is: None"','An error'],2,
-  ['5 does appear first, but there is a second line...','This would be true if the function used return. But it used print instead!','Correct! The function prints 5 (line 2), but never returns a value. So result is None. This is THE most important distinction: print ≠ return.','No error; it runs, just gives a surprising result.'],
-  'print() shouts to the screen. return hands a value back to the caller. They are completely different operations. This is the #1 trap for beginners.')}
+  ['5 does appear first, but there is a second line because the program also prints <code>result</code>.','This would be true if the function used <code>return</code>. But it used <code>print()</code>, so no value was sent back into <code>result</code>.','Correct. The function prints 5, but it does not return anything. When a function has no return value, Python gives back <code>None</code>.','No error. The code runs, but the result is surprising if you expected <code>print()</code> to store a value.'],
+  '<code>print()</code> shows something on the screen. <code>return</code> sends a value back to the place where the function was called.')}
+
+<div class="teach gold"><h3>🔁 Return vs. Store: the missing step</h3>
+<p><strong>Return does not store by itself.</strong> Return sends a value back. A variable stores it only when the call is placed on the right side of <code>=</code>.</p>
+<div class="mini-flow"><span class="flow-pill">function calculates</span><span class="flow-arrow">→</span><span class="flow-pill">return sends value back</span><span class="flow-arrow">→</span><span class="flow-pill">variable stores returned value</span><span class="flow-arrow">→</span><span class="flow-pill">print displays stored value</span></div>
+${outputDemo(['def add(a, b):','    return a + b','','result = add(2, 3)','print(result)'],'5','Python output')}
+<div class="warning-card"><h4>Important</h4><p><code>result = add(2, 3)</code> means: run <code>add(2, 3)</code>, take the value it returns, and store that value in <code>result</code>.</p></div>
+</div>
+
+<div class="teach blue"><h3>🧭 Step-by-step: with return</h3>
+<div class="job-step"><div class="job-step-num">1</div><div><strong>Call:</strong> <code>add(2, 3)</code> starts the function.</div></div>
+<div class="job-step"><div class="job-step-num">2</div><div><strong>Parameters receive values:</strong> <code>a = 2</code> and <code>b = 3</code>.</div></div>
+<div class="job-step"><div class="job-step-num">3</div><div><strong>Return sends back:</strong> <code>5</code>.</div></div>
+<div class="job-step"><div class="job-step-num">4</div><div><strong>Storage happens here:</strong> <code>result = 5</code>.</div></div>
+<div class="job-step"><div class="job-step-num">5</div><div><strong>Then print displays:</strong> <code>5</code>.</div></div>
+</div>
+
+<div class="teach pink"><h3>🚫 Step-by-step: without return</h3>
+<p>This function displays the answer, but it does not send the answer back to be stored.</p>
+${outputDemo(['def add(a, b):','    print(a + b)','','result = add(2, 3)','print(result)'],'5\nNone','Python output')}
+<div class="job-step"><div class="job-step-num">1</div><div><code>print(a + b)</code> displays <code>5</code> on the screen.</div></div>
+<div class="job-step"><div class="job-step-num">2</div><div>The function has no <code>return</code>, so it sends back <code>None</code>.</div></div>
+<div class="job-step"><div class="job-step-num">3</div><div><code>result</code> stores <code>None</code>, not <code>5</code>.</div></div>
+<div class="job-step"><div class="job-step-num">4</div><div><code>print(result)</code> displays <code>None</code>.</div></div>
+</div>
+
+<div class="teach green"><h3>🧪 Try it: choose the function body</h3>
+<p>Choose what goes inside the function, then run it and compare the output.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0">
+  <button class="btn btn-sm btn-pink" onclick="rvChoice('print')">Use print(a + b)</button>
+  <button class="btn btn-sm btn-green" onclick="rvChoice('return')">Use return a + b</button>
+</div>
+<div id="rvResult" class="bright-card blue-card"><p style="margin:0;color:var(--text2)">Choose one option to see what Python displays.</p></div>
+</div>
+
+${Q('s2store','Which line actually stores the returned value in a variable?',
+  ['return a + b','result = add(2, 3)','print(result)','def add(a, b):'],1,
+  ['<code>return a + b</code> sends the value back, but it does not choose where to store it.','Correct. The function call is on the right side of <code>=</code>, so the returned value gets stored in <code>result</code>.','<code>print(result)</code> displays the value that is already stored.','<code>def add(a, b):</code> creates the function. It does not store the returned value.'],
+  'Return sends the value back. Assignment with <code>=</code> stores it.')}
+
+${Q('s2none','Why does <code>None</code> appear when the function only uses <code>print(a + b)</code>?',
+  ['Because the math is wrong','Because <code>print()</code> displays the answer but does not send it back','Because variables cannot store numbers','Because every function always returns 0'],1,
+  ['The math is correct: <code>2 + 3</code> is 5. The problem is that 5 was displayed, not returned.','Correct. <code>print()</code> puts 5 on the screen, but the function sends back no usable value, so Python gives <code>None</code>.','Variables can store numbers. The issue is that no number was returned to store.','Functions do not automatically return 0. Without a return value, Python returns <code>None</code>.'],
+  'When you want to save or reuse a result, use <code>return</code>.')}
+
+${Q('s2reuse','You want to calculate a total and use that answer later in another line. Which is the better function body?',
+  ['print(total)','return total','input(total)','def total'],1,
+  ['<code>print(total)</code> only shows the total on the screen. It does not send the value back.','Correct. <code>return total</code> sends the value back so another line can store or use it.','<code>input()</code> asks the user to type something. It does not return the calculated total.','<code>def</code> starts a function definition. It is not the body line that sends back a result.'],
+  '<code>return</code> is for delivering a result back to the caller.')}
 
 <div class="two" style="margin:28px 0">
 <div class="teach pink" style="margin:0"><h3>📤 Void: Does and Leaves</h3>
-<p>No value sent back.</p>
-${cS(['def say_hi():','    print("Hello!")','','say_hi()  # shows Hello!'])}</div>
+<p>No value sent back. It performs an action on the screen.</p>
+${simpleOutputDemo(['def say_hi():','    print("Hello!")','','say_hi()'],'Hello!','Python output')}</div>
 <div class="teach green" style="margin:0"><h3>📥 Returns: Does and Delivers</h3>
-<p>Sends a value back.</p>
-${cS(['def add(a, b):','    return a + b','','result = add(3, 4)  # 7'])}</div></div>
+<p>Sends a value back so another line can store it, print it, or use it.</p>
+${simpleOutputDemo(['def add(a, b):','    return a + b','','result = add(3, 4)','print(result)'],'7','Python output')}</div></div>
 `}
+
+function rvChoice(kind){
+  const box=document.getElementById('rvResult');
+  if(!box)return;
+  if(kind==='print'){
+    box.innerHTML=`<h4 style="color:var(--pink)">You chose print(a + b)</h4>
+    <p><code>print()</code> displays 5, but it does not send 5 back into <code>result</code>.</p>
+    ${outputDemo(['def add(a, b):','    print(a + b)','','result = add(2, 3)','print(result)'],'5\nNone','Python output')}`;
+  }else{
+    box.innerHTML=`<h4 style="color:var(--green)">You chose return a + b</h4>
+    <p><code>return</code> sends 5 back to the call. Then <code>result</code> stores 5.</p>
+    ${outputDemo(['def add(a, b):','    return a + b','','result = add(2, 3)','print(result)'],'5','Python output')}`;
+  }
+}
 
 function st3(){return`
 <div class="teach green"><h3>🤔 Prediction: What order do things happen?</h3>
+<p>Read the code first. Python will not start inside <code>main</code> until the last line calls <code>main()</code>.</p>
 ${cS(['def main():','    print("Step 1")','    do_work()','    print("Step 3")','','def do_work():','    print("Step 2")','','main()'])}
+<div class="warning-card"><h4>How to think about it</h4>
+<p><code>def main():</code> stores the instructions for <code>main</code>. It does not run them yet.</p>
+<p><code>def do_work():</code> stores the instructions for <code>do_work</code>. It does not run them yet.</p>
+<p>The last line, <code>main()</code>, is the first line that actually starts the action.</p>
+</div>
 <p>What order do you think the steps print?</p></div>
+
 ${Q('s3pred','What is the output order?',
   ['Step 1, Step 2, Step 3','Step 2, Step 1, Step 3','Nothing; main is never called','Step 1, Step 3, Step 2'],0,
-  ['Correct! main() runs first, prints Step 1, calls do_work() which prints Step 2, returns, then prints Step 3.','do_work() only runs when main() calls it on line 3.','Look at line 9; main() IS called!','Step 2 happens DURING main, between Steps 1 and 3.'],
-  'main() is the boss. It delegates to workers (other functions) in order.')}
+  ['Correct. Python starts when it reaches <code>main()</code>. Inside <code>main</code>, it prints Step 1, jumps into <code>do_work()</code> for Step 2, then returns to <code>main</code> and prints Step 3.',
+   '<code>Step 2</code> is inside <code>do_work()</code>. That function is stored first, but it does not run first. It runs only when <code>main()</code> calls <code>do_work()</code>.',
+   'Look at the last line: <code>main()</code> is called. That line starts the program action.',
+   'Python does not skip <code>do_work()</code>. When it reaches <code>do_work()</code> inside <code>main</code>, it jumps into that function before continuing to <code>print("Step 3")</code>.'],
+  `${outputDemo(['def main():','    print("Step 1")','    do_work()','    print("Step 3")','','def do_work():','    print("Step 2")','','main()'],'Step 1\nStep 2\nStep 3','Python output')}
+  <div class="strat"><b>What main does:</b> <code>main()</code> is the starting call. It tells Python, “Run the instructions saved under <code>main</code>.” Python then goes line by line inside <code>main</code>. When it reaches <code>do_work()</code>, it temporarily leaves <code>main</code>, runs <code>do_work</code>, then comes back to the next line in <code>main</code>. That is why the order is Step 1 → Step 2 → Step 3.</div>`)}
+
 <div class="teach blue"><h3>🎬 Watch It Happen</h3>
+<p>This tracer shows that Python is not skipping steps. It is jumping into <code>do_work()</code> and then returning to <code>main()</code>.</p>
 <div id="wk" style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin:20px 0"></div>
 <div class="out" id="bL" style="min-height:120px"><div class="out-label">Execution Log</div><div style="color:var(--text3)">Click Run...</div></div>
 <div style="margin-top:16px;display:flex;gap:10px"><button class="btn btn-blue" id="rB" onclick="rBoss()">▶ Run main()</button><button class="btn btn-ghost" onclick="resetB()">↺ Reset</button></div></div>
@@ -1269,7 +1353,7 @@ ${Q('s3pred','What is the output order?',
 
 function initSt3(){const w=document.getElementById('wk');if(!w)return;['do_work()'].forEach(fn=>{const d=document.createElement('div');d.id='w-'+fn.replace(/[()]/g,'');d.style.cssText='padding:16px 26px;background:rgba(255,255,255,0.04);border:2px solid var(--border);border-radius:14px;font-family:var(--mono);font-size:15px;font-weight:600;transition:all .5s';d.textContent=fn;w.appendChild(d)})}
 function rBoss(){const log=document.getElementById('bL');document.getElementById('rB').disabled=true;log.innerHTML='<div class="out-label">Execution Log</div>';
-[{m:'→ Python stores main() and do_work()...',c:'var(--text2)',t:500},{m:'→ Line 9: main() called!',c:'var(--blue)',t:1200},{m:'  → print("Step 1")',c:'var(--green)',t:1900},{m:'  → do_work() called; jumping!',c:'var(--purple)',t:2600,w:'do_work'},{m:'    → print("Step 2")',c:'var(--green)',t:3300},{m:'  ← Returned to main()',c:'var(--yellow)',t:4000,w:'do_work',d:1},{m:'  → print("Step 3")',c:'var(--green)',t:4700},{m:'✅ Done!',c:'var(--yellow)',t:5400}].forEach(s=>{setTimeout(()=>{log.innerHTML+=`<div style="color:${s.c};font-size:15px">${s.m}</div>`;if(s.w){const e=document.getElementById('w-'+s.w);if(e){e.style.borderColor=s.d?'var(--green)':'var(--blue)';e.style.background=s.d?'rgba(78,205,196,0.1)':'rgba(91,141,238,0.1)'}}if(s.t===5400){document.getElementById('rB').disabled=false;addXP(10)}log.scrollTop=log.scrollHeight},s.t)})}
+[{m:'→ Python reads def main(): and stores it. Nothing prints yet.',c:'var(--text2)',t:500},{m:'→ Python reads def do_work(): and stores it. Nothing prints yet.',c:'var(--text2)',t:1100},{m:'→ Last line: main() is called. Now main starts.',c:'var(--blue)',t:1700},{m:'  → Inside main: print("Step 1")',c:'var(--green)',t:2400},{m:'  → Inside main: do_work() is called, so Python jumps into do_work.',c:'var(--purple)',t:3100,w:'do_work'},{m:'    → Inside do_work: print("Step 2")',c:'var(--green)',t:3800},{m:'  ← do_work is finished, so Python returns to the next line in main.',c:'var(--yellow)',t:4500,w:'do_work',d:1},{m:'  → Back inside main: print("Step 3")',c:'var(--green)',t:5200},{m:'✅ Done. main is finished.',c:'var(--yellow)',t:5900}].forEach(s=>{setTimeout(()=>{log.innerHTML+=`<div style="color:${s.c};font-size:15px">${s.m}</div>`;if(s.w){const e=document.getElementById('w-'+s.w);if(e){e.style.borderColor=s.d?'var(--green)':'var(--blue)';e.style.background=s.d?'rgba(78,205,196,0.1)':'rgba(91,141,238,0.1)'}}if(s.t===5900){document.getElementById('rB').disabled=false;addXP(10)}log.scrollTop=log.scrollHeight},s.t)})}
 function resetB(){document.getElementById('bL').innerHTML='<div class="out-label">Execution Log</div><div style="color:var(--text3)">Click Run...</div>';const e=document.getElementById('w-do_work');if(e){e.style.borderColor='var(--border)';e.style.background='rgba(255,255,255,0.04)'}}
 
 const EL=['def main():','    print("I have a message.")','    message()','    print("Goodbye!")','','def message():','    print("I am Arthur,")','    print("King of the Britons.")','','main()'];
