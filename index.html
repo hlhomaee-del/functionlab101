@@ -214,8 +214,20 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
 
 /* Station 1 and 2 beginner bridge updates */
-.color-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0}
-.legend-chip{border-radius:999px;padding:9px 13px;font-size:13px;font-weight:900;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}
+.side-legend{float:right;width:210px;margin:6px 0 16px 18px;padding:12px 12px 10px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 26px rgba(0,0,0,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.side-legend h5{font-size:12px;letter-spacing:.7px;text-transform:uppercase;color:var(--text2);margin:0 0 8px 0;font-weight:900}
+.legend-row{display:flex;align-items:center;gap:9px;margin:7px 0;font-size:12.5px;font-weight:800;color:var(--text2);line-height:1.25}
+.legend-dot{width:16px;height:16px;border-radius:50%;display:inline-block;flex:0 0 16px;border:1px solid rgba(255,255,255,.38);box-shadow:inset 0 1px 1px rgba(255,255,255,.28),0 3px 8px rgba(0,0,0,.22)}
+.legend-dot.fn{background:#3f8cff}
+.legend-dot.param{background:#ff7a00}
+.legend-dot.arg{background:#c8ff00}
+.legend-dot.call{background:#ff1493}
+.legend-dot.ret{background:#39ff14}
+.legend-dot.in{background:#00e5ff}
+.legend-dot.pr{background:#ff4f3d}
+.legend-txt{font-size:12.5px;font-weight:800;color:var(--text2)}
+.legend-clear{clear:both}
+@media(max-width:820px){.side-legend{float:none;width:100%;margin:12px 0 14px 0}}
 .soft-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px;margin:20px 0}
 .bright-card{border-radius:18px;padding:20px;border:2px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);box-shadow:0 12px 35px rgba(0,0,0,.18)}
 .bright-card h4{font-size:18px;margin-bottom:10px;font-weight:900}
@@ -279,8 +291,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .verb-c .flip-back{background:linear-gradient(135deg,rgba(255,122,182,.35),rgba(170,141,255,.22))}
 .verb-d .flip-front{background:linear-gradient(135deg,rgba(104,218,121,.48),rgba(58,191,224,.28))}
 .verb-d .flip-back{background:linear-gradient(135deg,rgba(129,232,151,.30),rgba(84,205,230,.22))}
-.verb-e .flip-front{background:linear-gradient(135deg,rgba(255,165,84,.50),rgba(255,116,173,.28))}
-.verb-e .flip-back{background:linear-gradient(135deg,rgba(255,191,117,.30),rgba(255,144,190,.22))}
+.verb-e .flip-front{background:linear-gradient(135deg,rgba(255,224,92,.58),rgba(255,187,51,.34))}
+.verb-e .flip-back{background:linear-gradient(135deg,rgba(255,232,128,.34),rgba(255,206,84,.26))}
 .task-card{background:rgba(255,255,255,.035);border:2px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;margin:16px 0}
 .task-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
 .task-badge{background:rgba(91,141,238,.16);border:1px solid rgba(91,141,238,.35);color:#dbe7ff;border-radius:999px;padding:6px 12px;font-weight:900;font-size:13px}
@@ -288,11 +300,113 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .reveal-box{margin-top:10px;padding:14px 16px;border-radius:14px;background:rgba(78,205,196,.08);border:1px solid rgba(78,205,196,.25);font-family:var(--mono);color:var(--green);font-weight:900}
 .ccode{font-family:var(--mono);font-size:16px;line-height:2;background:#080b16;border:2px solid rgba(91,141,238,.15);border-radius:16px;padding:20px;overflow-x:auto;margin:16px 0}
 .ccode .body-line{border-left:4px solid rgba(78,205,196,.45);padding-left:14px;display:block}
-.cc-def{color:#c792ea;font-weight:900}.cc-fn{color:#82aaff;font-weight:900}.cc-par{color:#ffd740;font-weight:900}.cc-param{color:#f78c6c;font-weight:900}.cc-arg{color:#ffab40;font-weight:900}.cc-call{color:#ff6b9d;font-weight:900}.cc-ret{color:#4ecdc4;font-weight:900}.cc-in{color:#40e0d0;font-weight:900}.cc-pr{color:#89ddff;font-weight:900}.cc-col{color:#ff8a50;font-weight:900}.cc-str{color:#c3e88d}.click-part{border-bottom:3px solid currentColor;cursor:pointer;padding:1px 2px;border-radius:4px}.click-part:hover{background:rgba(255,255,255,.08)}
+.cc-def{color:#d86cff;font-weight:900;text-shadow:0 0 10px rgba(216,108,255,.35)}.cc-fn{color:#3f8cff;font-weight:900;text-shadow:0 0 10px rgba(63,140,255,.35)}.cc-par{color:#ffea00;font-weight:900;text-shadow:0 0 10px rgba(255,234,0,.35)}.cc-param{color:#ff7a00;font-weight:900;text-shadow:0 0 10px rgba(255,122,0,.35)}.cc-arg{color:#c8ff00;font-weight:900;text-shadow:0 0 10px rgba(200,255,0,.35)}.cc-call{color:#ff1493;font-weight:900;text-shadow:0 0 10px rgba(255,20,147,.35)}.cc-ret{color:#39ff14;font-weight:900;text-shadow:0 0 10px rgba(57,255,20,.35)}.cc-in{color:#00e5ff;font-weight:900;text-shadow:0 0 10px rgba(0,229,255,.35)}.cc-pr{color:#ff4f3d;font-weight:900;text-shadow:0 0 10px rgba(255,79,61,.35)}.cc-col{color:#ffb000;font-weight:900;text-shadow:0 0 10px rgba(255,176,0,.35)}.cc-str{color:#c3e88d}.click-part{border-bottom:3px solid currentColor;cursor:pointer;padding:1px 2px;border-radius:4px}.click-part:hover{background:rgba(255,255,255,.08)}
 .decision-box{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:20px 0}
 .small-label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);font-weight:900;margin-bottom:8px}
 
 @media(max-width:640px){.sgrid{grid-template-columns:1fr}.wrap,.wrap-wide{padding:0 16px}.phase-card,.challenge{padding:28px}.output-label-row{justify-content:center;padding-right:0}.flow-row{justify-content:center}.monitor{width:100%}.flip-card,.flip-inner{min-height:250px}}
+
+/* Strongly separated fluorescent syntax colors */
+.legend-dot.fn{background:#3f8cff!important}
+.legend-dot.param{background:#ff7a00!important}
+.legend-dot.arg{background:#c8ff00!important}
+.legend-dot.call{background:#ff1493!important}
+.legend-dot.ret{background:#39ff14!important}
+.legend-dot.in{background:#00e5ff!important}
+.legend-dot.pr{background:#ff4f3d!important}
+
+
+/* Built-in function explorer cards: different glassy colors with strong contrast */
+.built-card{min-height:245px}
+.built-card .flip-inner{min-height:245px}
+.built-card .flip-front,
+.built-card .flip-back{
+  border:2px solid rgba(255,255,255,.22);
+  box-shadow:0 16px 38px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.18);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.built-card .flip-front{justify-content:center;text-align:center}
+.built-title{
+  font-family:var(--mono);
+  font-size:31px;
+  line-height:1.1;
+  font-weight:900;
+  color:#4ecdc4;
+  background:rgba(3,7,18,.34);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:16px;
+  padding:13px 18px;
+  display:inline-block;
+  text-shadow:0 0 12px rgba(78,205,196,.38),0 2px 4px rgba(0,0,0,.35);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18);
+}
+.built-card .tap-note{
+  color:#ffffff;
+  font-size:13px;
+  font-weight:900;
+  margin-top:14px;
+  opacity:.94;
+}
+.built-card .flip-back{
+  color:#f8fbff;
+  justify-content:flex-start;
+  text-align:left;
+  font-size:13.5px;
+  line-height:1.45;
+  padding:16px;
+}
+.built-card .flip-back strong{color:#ffffff}
+.built-card .flip-back p{width:100%;margin:0 0 9px 0}
+.built-card .flip-back code{
+  display:block;
+  width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  background:rgba(3,7,18,.28);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff7cf;
+  padding:8px 10px;
+  border-radius:12px;
+  font-size:12.8px;
+  line-height:1.35;
+  font-weight:800;
+}
+.built-print .flip-front{background:linear-gradient(135deg,rgba(255,80,61,.55),rgba(255,171,64,.28))}
+.built-print .flip-back{background:linear-gradient(135deg,rgba(255,80,61,.35),rgba(255,171,64,.20))}
+.built-input .flip-front{background:linear-gradient(135deg,rgba(0,229,255,.45),rgba(34,197,94,.24))}
+.built-input .flip-back{background:linear-gradient(135deg,rgba(0,229,255,.30),rgba(34,197,94,.18))}
+.built-int .flip-front{background:linear-gradient(135deg,rgba(63,140,255,.50),rgba(155,109,255,.26))}
+.built-int .flip-back{background:linear-gradient(135deg,rgba(63,140,255,.32),rgba(155,109,255,.18))}
+.built-float .flip-front{background:linear-gradient(135deg,rgba(255,20,147,.48),rgba(255,107,157,.26))}
+.built-float .flip-back{background:linear-gradient(135deg,rgba(255,20,147,.31),rgba(255,107,157,.18))}
+.built-str .flip-front{background:linear-gradient(135deg,rgba(200,255,0,.42),rgba(255,224,92,.24))}
+.built-str .flip-back{background:linear-gradient(135deg,rgba(200,255,0,.24),rgba(255,224,92,.18))}
+.built-len .flip-front{background:linear-gradient(135deg,rgba(216,108,255,.48),rgba(63,140,255,.24))}
+.built-len .flip-back{background:linear-gradient(135deg,rgba(216,108,255,.30),rgba(63,140,255,.18))}
+.built-round .flip-front{background:linear-gradient(135deg,rgba(255,176,0,.52),rgba(255,234,0,.25))}
+.built-round .flip-back{background:linear-gradient(135deg,rgba(255,176,0,.31),rgba(255,234,0,.17))}
+.built-type .flip-front{background:linear-gradient(135deg,rgba(57,255,20,.42),rgba(0,229,255,.22))}
+.built-type .flip-back{background:linear-gradient(135deg,rgba(57,255,20,.24),rgba(0,229,255,.16))}
+.built-max .flip-front{background:linear-gradient(135deg,rgba(255,122,0,.52),rgba(255,80,61,.25))}
+.built-max .flip-back{background:linear-gradient(135deg,rgba(255,122,0,.31),rgba(255,80,61,.17))}
+.built-min .flip-front{background:linear-gradient(135deg,rgba(20,184,166,.48),rgba(59,130,246,.24))}
+.built-min .flip-back{background:linear-gradient(135deg,rgba(20,184,166,.30),rgba(59,130,246,.17))}
+.built-sum .flip-front{background:linear-gradient(135deg,rgba(236,72,153,.48),rgba(250,204,21,.24))}
+.built-sum .flip-back{background:linear-gradient(135deg,rgba(236,72,153,.30),rgba(250,204,21,.17))}
+.built-range .flip-front{background:linear-gradient(135deg,rgba(14,165,233,.48),rgba(99,102,241,.24))}
+.built-range .flip-back{background:linear-gradient(135deg,rgba(14,165,233,.30),rgba(99,102,241,.17))}
+.built-abs .flip-front{background:linear-gradient(135deg,rgba(132,204,22,.48),rgba(16,185,129,.24))}
+.built-abs .flip-back{background:linear-gradient(135deg,rgba(132,204,22,.30),rgba(16,185,129,.17))}
+.built-sorted .flip-front{background:linear-gradient(135deg,rgba(244,114,182,.48),rgba(168,85,247,.24))}
+.built-sorted .flip-back{background:linear-gradient(135deg,rgba(244,114,182,.30),rgba(168,85,247,.17))}
+.built-list .flip-front{background:linear-gradient(135deg,rgba(45,212,191,.48),rgba(200,255,0,.20))}
+.built-list .flip-back{background:linear-gradient(135deg,rgba(45,212,191,.29),rgba(200,255,0,.15))}
+.built-dict .flip-front{background:linear-gradient(135deg,rgba(96,165,250,.48),rgba(255,122,0,.22))}
+.built-dict .flip-back{background:linear-gradient(135deg,rgba(96,165,250,.29),rgba(255,122,0,.15))}
+.built-set .flip-front{background:linear-gradient(135deg,rgba(251,113,133,.48),rgba(34,197,94,.22))}
+.built-set .flip-back{background:linear-gradient(135deg,rgba(251,113,133,.29),rgba(34,197,94,.15))}
+
 </style>
 </head>
 <body>
@@ -722,16 +836,14 @@ function getStation(i){return[st0,st1,st2,st3,st4,st5,st6,st7,st8,st9,st10,st11]
 function initSt(i){if(i===3)initSt3();if(i===4)initSt4()}
 
 
-function legend(){return `<div class="color-legend">
-  <div class="legend-chip"><span class="cc-def">Purple</span> = Python keyword</div>
-  <div class="legend-chip"><span class="cc-fn">Blue</span> = function name</div>
-  <div class="legend-chip"><span class="cc-par">Yellow</span> = parentheses</div>
-  <div class="legend-chip"><span class="cc-param">Orange</span> = parameter</div>
-  <div class="legend-chip"><span class="cc-arg">Gold</span> = argument</div>
-  <div class="legend-chip"><span class="cc-call">Pink</span> = function call</div>
-  <div class="legend-chip"><span class="cc-ret">Green</span> = return</div>
-  <div class="legend-chip"><span class="cc-in">Teal</span> = input()</div>
-  <div class="legend-chip"><span class="cc-pr">Cyan</span> = print()</div>
+function legend(){return `<div class="side-legend"><h5>Code key</h5>
+  <div class="legend-row"><span class="legend-dot fn"></span><span class="legend-txt">function name</span></div>
+  <div class="legend-row"><span class="legend-dot param"></span><span class="legend-txt">parameter</span></div>
+  <div class="legend-row"><span class="legend-dot arg"></span><span class="legend-txt">argument</span></div>
+  <div class="legend-row"><span class="legend-dot call"></span><span class="legend-txt">function call</span></div>
+  <div class="legend-row"><span class="legend-dot ret"></span><span class="legend-txt">return</span></div>
+  <div class="legend-row"><span class="legend-dot in"></span><span class="legend-txt">input()</span></div>
+  <div class="legend-row"><span class="legend-dot pr"></span><span class="legend-txt">print()</span></div>
 </div>`}
 function flipVerb(el){el.classList.toggle('flipped')}
 function cc(lines){return `<div class="ccode">${lines.join('<br>')}</div>`}
@@ -864,8 +976,9 @@ ${nameTask('B','Ask for birth year','year = int(input("Year? "))','fnB')}
 ${nameTask('C','Calculate age','age = 2025 - year','fnC')}
 ${nameTask('D','Display a greeting','print("Hello " + name + "! Age: " + str(age))','fnD')}
 <div id="allNamesDone" style="display:none;margin-top:22px" class="bright-card blue-card"><h4>Now the names can become real functions</h4>
+${legend()}
 ${cc(['<span class="cc-def">def</span> <span class="cc-fn">get_name</span><span class="cc-par">()</span><span class="cc-col">:</span>','<span class="body-line">    name = <span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Name? "</span><span class="cc-par">)</span></span>','<span class="body-line">    <span class="cc-ret">return</span> name</span>','','<span class="cc-def">def</span> <span class="cc-fn">get_birth_year</span><span class="cc-par">()</span><span class="cc-col">:</span>','<span class="body-line">    year = <span class="cc-in">int</span><span class="cc-par">(</span><span class="cc-in">input</span><span class="cc-par">(</span><span class="cc-str">"Year? "</span><span class="cc-par">))</span></span>','<span class="body-line">    <span class="cc-ret">return</span> year</span>','','<span class="cc-def">def</span> <span class="cc-fn">calculate_age</span><span class="cc-par">(</span><span class="cc-param">year</span><span class="cc-par">)</span><span class="cc-col">:</span>','<span class="body-line">    age = 2025 - year</span>','<span class="body-line">    <span class="cc-ret">return</span> age</span>','','<span class="cc-def">def</span> <span class="cc-fn">display_greeting</span><span class="cc-par">(</span><span class="cc-param">name</span>, <span class="cc-param">age</span><span class="cc-par">)</span><span class="cc-col">:</span>','<span class="body-line">    <span class="cc-pr">print</span><span class="cc-par">(</span><span class="cc-str">"Hello "</span> + name + <span class="cc-str">"! Age: "</span> + <span class="cc-in">str</span><span class="cc-par">(</span>age<span class="cc-par">))</span></span>','','name = <span class="cc-call">get_name</span><span class="cc-par">()</span>','year = <span class="cc-call">get_birth_year</span><span class="cc-par">()</span>','age = <span class="cc-call">calculate_age</span><span class="cc-par">(</span><span class="cc-arg">year</span><span class="cc-par">)</span>','<span class="cc-call">display_greeting</span><span class="cc-par">(</span><span class="cc-arg">name</span>, <span class="cc-arg">age</span><span class="cc-par">)</span>'])}
-${legend()}</div>
+<div class="legend-clear"></div></div>
 </div>
 `}
 
@@ -900,14 +1013,14 @@ function st1(){return`
 ${legend()}
 <div class="code" style="font-size:20px;line-height:2.6;cursor:pointer">
 <span class="line"><span class="ln">1</span><span onclick="sP('kw')" class="click-part cc-def">def</span> <span onclick="sP('nm')" class="click-part cc-fn">greet</span><span onclick="sP('plist')" class="click-part cc-par">(</span><span onclick="sP('param')" class="click-part cc-param">name</span><span onclick="sP('plist')" class="click-part cc-par">)</span><span onclick="sP('co')" class="click-part cc-col">:</span></span>
-<span class="line" onclick="sP('bd')" style="cursor:pointer"><span class="ln">2</span>    <span class="cc-pr">print</span><span class="cc-par">(</span><span class="cc-str">"Hello"</span>, name<span class="cc-par">)</span></span>
+<span class="line" onclick="sP('bd')" style="cursor:pointer"><span class="ln">2</span>    <span class="cc-pr">print</span><span class="cc-par">(</span><span class="cc-str">"Hello"</span>, <span class="cc-param">name</span><span class="cc-par">)</span></span>
 </div>
 <p style="margin-top:12px">Click each colored part to see what it does.</p>
-<div id="pI" style="min-height:80px;margin-top:12px"></div></div>
+<div id="pI" style="min-height:80px;margin-top:12px"></div><div class="legend-clear"></div></div>
 
 <div class="teach blue"><h3>📞 Definition vs. Call</h3>
 <div class="soft-grid">
-  <div class="bright-card blue-card"><div class="small-label">Definition</div>${cc(['<span class="cc-def">def</span> <span class="cc-fn">greet</span><span class="cc-par">(</span><span class="cc-param">name</span><span class="cc-par">)</span><span class="cc-col">:</span>','<span class="body-line">    <span class="cc-pr">print</span><span class="cc-par">(</span><span class="cc-str">"Hello"</span>, name<span class="cc-par">)</span></span>'])}</div>
+  <div class="bright-card blue-card"><div class="small-label">Definition</div>${cc(['<span class="cc-def">def</span> <span class="cc-fn">greet</span><span class="cc-par">(</span><span class="cc-param">name</span><span class="cc-par">)</span><span class="cc-col">:</span>','<span class="body-line">    <span class="cc-pr">print</span><span class="cc-par">(</span><span class="cc-str">"Hello"</span>, <span class="cc-param">name</span><span class="cc-par">)</span></span>'])}</div>
   <div class="bright-card purple-card"><div class="small-label">Call</div>${cc(['<span class="cc-call">greet</span><span class="cc-par">(</span><span class="cc-arg">"Maya"</span><span class="cc-par">)</span>'])}<p>This is the call. It runs the function and sends <code>"Maya"</code> into the parameter <code>name</code>.</p></div>
 </div>
 <div class="mini-flow"><span class="flow-pill">greet("Maya")</span><span class="flow-arrow">→</span><span class="flow-pill">name receives "Maya"</span><span class="flow-arrow">→</span><span class="flow-pill">print runs</span><span class="flow-arrow">→</span><span class="flow-pill">Hello Maya</span></div>
@@ -945,11 +1058,47 @@ ${Q('s1needsparam','Which function should have a parameter?', ['A function that 
 <p>Create a function that converts Fahrenheit to Celsius. Formula: <code style="font-family:var(--mono);background:rgba(91,141,238,0.1);padding:3px 10px;border-radius:6px">(fahrenheit - 32) × 5/9</code></p>
 <div class="code" style="font-size:18px;line-height:2.6;margin-top:16px">
 <span class="line"><span class="ln">1</span><span class="cc-def">def</span> <input class="ii" id="bf1" placeholder="function_name" style="width:260px;font-size:16px">(<input class="ii" id="bf2" placeholder="parameter" style="width:150px;font-size:16px">):</span>
-<span class="line"><span class="ln">2</span>    celsius = (<input class="ii" id="bf3" placeholder="parameter again" style="width:160px;font-size:16px"> - 32) * 5/9</span>
+<span class="line"><span class="ln">2</span>    celsius = (<input class="ii" id="bf3" placeholder="parameter" style="width:160px;font-size:16px"> - 32) * 5/9</span>
 <span class="line"><span class="ln">3</span>    <select class="is" id="bf4" style="font-size:16px"><option value="">choose</option><option value="return">return</option><option value="print">print</option></select> celsius</span>
 </div>
 <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn btn-sm btn-blue" onclick="ckBF()">Check My Function</button><button class="btn btn-sm btn-ghost" onclick="bfHint(1)">Hint 1</button><button class="btn btn-sm btn-ghost" onclick="bfHint(2)">Hint 2</button><button class="btn btn-sm btn-ghost" onclick="bfHint(3)">Hint 3</button><button class="btn btn-sm btn-pink" id="bfReveal" onclick="revealBF()" disabled>Reveal Answer</button></div>
 <div id="bf-hint"></div><div id="bf-fb" style="margin-top:14px"></div></div>
+
+<div class="teach green"><h3>🧪 Try One on Your Own</h3>
+<p>Build a function that calculates sales tax from a price. Use this formula: <code style="font-family:var(--mono);background:rgba(91,141,238,0.1);padding:3px 10px;border-radius:6px">price × 0.0875</code></p>
+<div class="code" style="font-size:18px;line-height:2.6;margin-top:16px">
+<span class="line"><span class="ln">1</span><span class="cc-def">def</span> <input class="ii" id="solo1" placeholder="" aria-label="function name" style="width:260px;font-size:16px">(<input class="ii" id="solo2" placeholder="" aria-label="parameter" style="width:150px;font-size:16px">):</span>
+<span class="line"><span class="ln">2</span>    tax = <input class="ii" id="solo3" placeholder="" aria-label="parameter used in formula" style="width:160px;font-size:16px"> * 0.0875</span>
+<span class="line"><span class="ln">3</span>    <select class="is" id="solo4" style="font-size:16px"><option value=""></option><option value="return">return</option><option value="print">print</option></select> tax</span>
+</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn btn-sm btn-green" onclick="ckSolo()">Check My Function</button></div>
+<div id="solo-fb" style="margin-top:14px"></div></div>
+
+<div class="teach blue"><h3>➕ Do you want to try another one?</h3>
+<p>This one is a different kind of function. It does not calculate a number. It formats text.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+  <button class="btn btn-sm btn-green" onclick="showFormatPractice()">Yes, show another practice</button>
+  <button class="btn btn-sm btn-ghost" onclick="document.getElementById('formatChoice').innerHTML='<div class=&quot;hint-box&quot;>No problem. You can come back to this practice later.</div>'">Not right now</button>
+</div>
+<div id="formatChoice"></div>
+<div id="formatPractice" class="hidden" style="margin-top:18px">
+  <div class="bright-card purple-card"><h4>Practice: format a full name</h4>
+  <p>Build a function that receives a first name and a last name, joins them with one space, and sends back the full name.</p>
+  <div class="code" style="font-size:18px;line-height:2.6;margin-top:16px">
+  <span class="line"><span class="ln">1</span><span class="cc-def">def</span> <input class="ii" id="fmt1" placeholder="" aria-label="function name" style="width:260px;font-size:16px">(<input class="ii" id="fmt2" placeholder="" aria-label="first parameter" style="width:130px;font-size:16px">, <input class="ii" id="fmt3" placeholder="" aria-label="second parameter" style="width:130px;font-size:16px">):</span>
+  <span class="line"><span class="ln">2</span>    full_name = <input class="ii" id="fmt4" placeholder="" aria-label="first parameter used in formula" style="width:130px;font-size:16px"> + " " + <input class="ii" id="fmt5" placeholder="" aria-label="second parameter used in formula" style="width:130px;font-size:16px"></span>
+  <span class="line"><span class="ln">3</span>    <select class="is" id="fmt6" style="font-size:16px"><option value=""></option><option value="return">return</option><option value="print">print</option></select> full_name</span>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+    <button class="btn btn-sm btn-green" onclick="ckFormat()">Check My Function</button>
+    <button class="btn btn-sm btn-ghost" onclick="fmtHint(1)">Hint 1</button>
+    <button class="btn btn-sm btn-ghost" onclick="fmtHint(2)">Hint 2</button>
+    <button class="btn btn-sm btn-ghost" onclick="fmtHint(3)">Hint 3</button>
+    <button class="btn btn-sm btn-pink" id="fmtReveal" onclick="revealFormat()" disabled>Reveal Answer</button>
+  </div>
+  <div id="fmt-hint"></div><div id="fmt-fb" style="margin-top:14px"></div>
+  </div>
+</div></div>
 
 <div class="teach pink"><h3>🧰 Built-in Python Functions Explorer</h3>
 <p>Python already has many functions built in. You do not define these yourself. Python already knows them. You call them by writing their name and parentheses.</p>
@@ -977,7 +1126,8 @@ ${cc(['<span class="cc-pr">print</span><span class="cc-par">(</span><span class=
 </div>
 `}
 
-function builtCard(name,what,ex,out){return `<div class="flip-card" onclick="flipVerb(this)"><div class="flip-inner"><div class="flip-front"><h4 style="font-family:var(--mono);color:var(--cyan)">${name}</h4><p style="font-size:13px;color:var(--text2);margin-top:8px">Click to flip</p></div><div class="flip-back"><p><strong>What it does:</strong> ${what}</p><p><strong>Example:</strong><br><code>${escHTML(ex)}</code></p>${out?`<p><strong>${escHTML(out)}</strong></p>`:''}</div></div></div>`}
+function builtClassFor(name){return 'built-' + name.replace('()','').replace(/[^a-zA-Z0-9_]/g,'').toLowerCase()}
+function builtCard(name,what,ex,out){const cls=builtClassFor(name);return `<div class="flip-card built-card ${cls}" onclick="flipVerb(this)"><div class="flip-inner"><div class="flip-front"><h4 class="built-title">${name}</h4><p class="tap-note">Click to flip</p></div><div class="flip-back"><p><strong>What it does:</strong> ${what}</p><p><strong>Example:</strong><br><code>${escHTML(ex)}</code></p>${out?`<p><strong>${escHTML(out)}</strong></p>`:''}</div></div></div>`}
 
 function sP(p){const m={
 kw:{t:'<span class="cc-def">def</span>',d:'This means define. It creates a function.'},
@@ -985,7 +1135,7 @@ nm:{t:'<span class="cc-fn">greet</span>',d:'This is the function name. We choose
 plist:{t:'<span class="cc-par">(name)</span>',d:'This is the parameter list. The parentheses show where outside information can be received.'},
 param:{t:'<span class="cc-param">name</span>',d:'This is a parameter. A parameter is a temporary variable that receives a value when the function is called.'},
 co:{t:'<span class="cc-col">:</span>',d:'The colon means: the function body begins next.'},
-bd:{t:'<span class="cc-pr">print("Hello", name)</span>',d:'This is an instruction inside the function body. Indented lines belong inside the function. They do not run until the function is called.'}
+bd:{t:'<span class="cc-pr">print</span><span class="cc-par">(</span><span class="cc-str">"Hello"</span>, <span class="cc-param">name</span><span class="cc-par">)</span>',d:'This is an instruction inside the function body. The name is still the parameter being used inside the instruction. Indented lines belong inside the function and run when the function is called.'}
 };const i=m[p];document.getElementById('pI').innerHTML=`<div class="teach blue" style="margin:0"><h3>${i.t}</h3><p>${i.d}</p></div>`}
 let bfTries=0,bfHints={};
 function bfHint(n){const h=['The function changes one unit into another, so use the verb convert.','The formula uses Fahrenheit, so the function needs Fahrenheit as a parameter.','The calculated value should be returned so another part of the program can use it.'];bfHints[n]=true;document.getElementById('bf-hint').innerHTML=`<div class="hint-box"><strong>Hint ${n}:</strong> ${h[n-1]}</div>`;document.getElementById('bfReveal').disabled=!(bfTries>=3||Object.keys(bfHints).length>=3)}
@@ -998,6 +1148,35 @@ if(e!==p||!e)iss.push('Use the same parameter name in the formula.');
 if(r!=='return')iss.push('Use <code>return</code> so another part of the program can use the Celsius value.');
 if(!iss.length){fb.innerHTML='<div class="qfb qok"><strong>✅ Excellent!</strong> The function takes Fahrenheit, converts it, and returns Celsius. The best name is <code>convert_fahrenheit_to_celsius</code> because it clearly says what conversion is happening.</div>';addXP(20);['bf1','bf2','bf3'].forEach(id=>document.getElementById(id).classList.add('iok'))}
 else fb.innerHTML=`<div class="qfb qno"><strong>Keep refining.</strong> ${iss.join(' ')}</div>`}
+
+function ckSolo(){const n=document.getElementById('solo1').value.trim().toLowerCase(),p=document.getElementById('solo2').value.trim().toLowerCase(),e=document.getElementById('solo3').value.trim().toLowerCase(),r=document.getElementById('solo4').value,fb=document.getElementById('solo-fb');let iss=[];
+const goodNames=['calculate_sales_tax','calc_sales_tax','compute_sales_tax','find_sales_tax'];
+if(!goodNames.includes(n))iss.push('Use a clear action name for this job, such as <code>calculate_sales_tax</code>.');
+if(p!=='price')iss.push('The function needs the price, so <code>price</code> is the strongest parameter name.');
+if(e!==p||!e)iss.push('Use the same parameter name in the formula line.');
+if(r!=='return')iss.push('Use <code>return</code> so the calculated tax can be used somewhere else.');
+if(!iss.length){fb.innerHTML=`<div class="qfb qok"><strong>✅ Strong work.</strong>${cc(['<span class="cc-def">def</span> <span class="cc-fn">calculate_sales_tax</span><span class="cc-par">(</span><span class="cc-param">price</span><span class="cc-par">)</span><span class="cc-col">:</span>','<span class="body-line">    tax = price * 0.0875</span>','<span class="body-line">    <span class="cc-ret">return</span> tax</span>'])}<p>This is the same thinking pattern: name the job, receive the needed value, calculate, and return the result.</p></div>`;addXP(20);['solo1','solo2','solo3'].forEach(id=>document.getElementById(id).classList.add('iok'))}
+else fb.innerHTML=`<div class="qfb qno"><strong>Review your structure.</strong> ${iss.join(' ')}</div>`}
+
+let fmtTries=0,fmtHints={};
+function showFormatPractice(){document.getElementById('formatPractice').classList.remove('hidden');document.getElementById('formatChoice').innerHTML='<div class="hint-box">Try this one after the sales-tax practice. Use the same structure, but now the job is text formatting.</div>'}
+function fmtHint(n){const h=[
+'This job changes two pieces of text into one full name, so a good verb is format.',
+'The function needs two pieces of information: first name and last name.',
+'The result should be returned so another part of the program can use the full name.'
+];fmtHints[n]=true;document.getElementById('fmt-hint').innerHTML=`<div class="hint-box"><strong>Hint ${n}:</strong> ${h[n-1]}</div>`;document.getElementById('fmtReveal').disabled=!(fmtTries>=3||Object.keys(fmtHints).length>=3)}
+function revealFormat(){document.getElementById('fmt-fb').innerHTML=`<div class="qfb qok"><strong>Suggested answer:</strong>${cc(['<span class="cc-def">def</span> <span class="cc-fn">format_full_name</span><span class="cc-par">(</span><span class="cc-param">first</span>, <span class="cc-param">last</span><span class="cc-par">)</span><span class="cc-col">:</span>','<span class="body-line">    full_name = first + <span class="cc-str">" "</span> + last</span>','<span class="body-line">    <span class="cc-ret">return</span> full_name</span>'])}<p>This function receives two text values, joins them, and returns one formatted result.</p></div>`;['fmt1','fmt2','fmt3','fmt4','fmt5'].forEach(id=>document.getElementById(id).classList.add('iok'))}
+function ckFormat(){fmtTries++;const n=document.getElementById('fmt1').value.trim().toLowerCase(),p1=document.getElementById('fmt2').value.trim().toLowerCase(),p2=document.getElementById('fmt3').value.trim().toLowerCase(),e1=document.getElementById('fmt4').value.trim().toLowerCase(),e2=document.getElementById('fmt5').value.trim().toLowerCase(),r=document.getElementById('fmt6').value,fb=document.getElementById('fmt-fb');document.getElementById('fmtReveal').disabled=!(fmtTries>=3||Object.keys(fmtHints).length>=3);let iss=[];
+const goodNames=['format_full_name','make_full_name','create_full_name','build_full_name'];
+if(!goodNames.includes(n))iss.push('Use a clear action name, such as <code>format_full_name</code>.');
+const firstOK=['first','first_name','fname'].includes(p1);
+const lastOK=['last','last_name','lname'].includes(p2);
+if(!firstOK||!lastOK)iss.push('Use parameter names that clearly represent the first name and last name.');
+if(e1!==p1||e2!==p2||!e1||!e2)iss.push('Use the same parameter names in the line that builds <code>full_name</code>.');
+if(r!=='return')iss.push('Use <code>return</code> so the formatted full name can be used somewhere else.');
+if(!iss.length){fb.innerHTML=`<div class="qfb qok"><strong>✅ Excellent.</strong>${cc(['<span class="cc-def">def</span> <span class="cc-fn">format_full_name</span><span class="cc-par">(</span><span class="cc-param">first</span>, <span class="cc-param">last</span><span class="cc-par">)</span><span class="cc-col">:</span>','<span class="body-line">    full_name = first + <span class="cc-str">" "</span> + last</span>','<span class="body-line">    <span class="cc-ret">return</span> full_name</span>'])}<p>You used the same function pattern for a text-formatting job.</p></div>`;addXP(20);['fmt1','fmt2','fmt3','fmt4','fmt5'].forEach(id=>document.getElementById(id).classList.add('iok'))}
+else fb.innerHTML=`<div class="qfb qno"><strong>Keep checking the structure.</strong> ${iss.join(' ')}</div>`}
+
 
 function st2(){return`
 <div class="teach purple"><h3>🤔 Prediction: What will this print?</h3>
