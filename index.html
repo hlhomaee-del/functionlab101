@@ -412,6 +412,153 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .compact-output .monitor-wrap{width:100%;min-width:0}
 .compact-output .monitor{width:100%;min-width:0}
 
+
+/* Prompt-applied practice system: preserves site structure */
+.practice-card{background:rgba(255,255,255,.035);border:2px solid rgba(255,255,255,.1);border-radius:18px;padding:22px;margin:20px 0}
+.practice-card h4{font-size:20px;font-weight:900;margin-bottom:8px;color:var(--text)}
+.practice-type{display:inline-flex;border-radius:999px;padding:5px 11px;background:rgba(64,224,208,.12);border:1px solid rgba(64,224,208,.28);color:var(--cyan);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px}
+.practice-card textarea{width:100%;min-height:90px;background:rgba(91,141,238,.08);border:2px solid rgba(91,141,238,.35);border-radius:14px;color:var(--text);font-family:var(--mono);font-size:15px;line-height:1.55;padding:14px;outline:none}
+.practice-card .p-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.practice-card .p-input{background:rgba(91,141,238,.08);border:2px solid rgba(91,141,238,.35);border-radius:10px;color:var(--text);font-family:var(--mono);font-size:15px;padding:9px 12px;min-width:130px;outline:none}
+.practice-card .p-select{background:rgba(91,141,238,.08);border:2px solid rgba(91,141,238,.35);border-radius:10px;color:var(--text);font-family:var(--mono);font-size:15px;padding:9px 12px;outline:none}.practice-card .p-select option{background:var(--card);color:var(--text)}
+.practice-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.pfb{margin-top:12px}.p-build{min-height:64px;border:2px dashed rgba(255,255,255,.15);border-radius:14px;padding:10px;margin-top:10px;background:rgba(255,255,255,.025)}
+.p-block{display:inline-flex;margin:5px;padding:9px 12px;border-radius:10px;background:rgba(64,224,208,.10);border:1px solid rgba(64,224,208,.28);color:var(--text);font-family:var(--mono);font-size:14px;cursor:pointer}
+.p-line{display:block;width:100%;text-align:left;margin:7px 0;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text);font-family:var(--mono);font-size:15px;padding:10px 12px;cursor:pointer}.p-line:hover{border-color:var(--cyan)}
+.compact-output .output-label-row{justify-content:flex-start;padding-right:0;margin:10px 0 8px 0}.compact-output .monitor-wrap{width:100%;min-width:0}.compact-output .monitor{width:100%;min-width:0}
+
+
+/* Enhanced Design Challenge Studio with animated hourglass */
+.dc-studio{margin:24px 0}
+.dc-hero{background:linear-gradient(135deg,rgba(91,141,238,.15),rgba(255,107,157,.09));border:2px solid rgba(91,141,238,.24);border-radius:22px;padding:26px;box-shadow:0 18px 45px rgba(0,0,0,.20)}
+.dc-blueprint{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:18px}
+.dc-node{background:rgba(255,255,255,.045);border:2px solid rgba(64,224,208,.18);border-radius:18px;padding:16px;text-align:center;position:relative;overflow:hidden}
+.dc-node b{display:block;color:var(--cyan);font-family:var(--mono);font-size:15px;margin-bottom:6px}
+.dc-node small{color:var(--text2);font-size:13px;line-height:1.4}
+.dc-editor-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:18px;margin:22px 0}
+@media(max-width:900px){.dc-editor-grid{grid-template-columns:1fr}}
+.dc-editor-wrap{background:#080b16;border:2px solid rgba(64,224,208,.18);border-radius:20px;padding:16px;box-shadow:inset 0 0 24px rgba(64,224,208,.035)}
+.dc-editor-label{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;color:var(--text2);font-size:13px;font-weight:900;letter-spacing:.8px;text-transform:uppercase}
+.dc-editor{width:100%;min-height:370px;background:#050812;border:2px solid rgba(91,141,238,.22);border-radius:16px;color:#f7fbff;font-family:var(--mono);font-size:15px;line-height:1.65;padding:18px;resize:vertical;outline:none}
+.dc-editor:focus{border-color:var(--cyan);box-shadow:0 0 22px rgba(64,224,208,.13)}
+.dc-panel{background:rgba(255,255,255,.035);border:2px solid rgba(255,255,255,.10);border-radius:20px;padding:18px}
+.dc-panel h4{font-size:18px;margin-bottom:10px;color:var(--yellow)}
+.dc-checklist{display:flex;flex-direction:column;gap:9px;margin-top:12px}
+.dc-checkitem{border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px 12px;color:var(--text2);font-size:14px;line-height:1.45;background:rgba(255,255,255,.025)}
+.dc-checkitem.ok{border-color:rgba(78,205,196,.35);background:rgba(78,205,196,.08);color:#d7fffb}
+.dc-checkitem.no{border-color:rgba(255,82,82,.28);background:rgba(255,82,82,.06);color:#ffd6d6}
+.dc-console{margin-top:16px;border:2px solid rgba(64,224,208,.2);border-radius:18px;background:#050812;padding:16px;min-height:120px;font-family:var(--mono);font-size:14px;line-height:1.6;color:var(--text2)}
+.dc-console .pass{color:var(--green);font-weight:900}.dc-console .fail{color:var(--red);font-weight:900}.dc-console .warn{color:var(--yellow);font-weight:900}
+.dc-timer{margin-top:14px;background:rgba(255,215,64,.06);border:2px solid rgba(255,215,64,.18);border-radius:18px;padding:16px;position:relative;overflow:hidden}
+.dc-timer-top{display:flex;gap:14px;align-items:center}
+.hourglass-wrap{width:58px;height:76px;display:flex;align-items:center;justify-content:center;flex:0 0 58px}
+.hourglass{position:relative;width:38px;height:58px;border-top:5px solid var(--yellow);border-bottom:5px solid var(--yellow);animation:hourTurn 3.2s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(255,215,64,.25))}
+.hourglass:before,.hourglass:after{content:'';position:absolute;left:6px;width:26px;height:26px;border-left:4px solid var(--yellow);border-right:4px solid var(--yellow)}
+.hourglass:before{top:2px;clip-path:polygon(0 0,100% 0,50% 100%)}
+.hourglass:after{bottom:2px;clip-path:polygon(50% 0,0 100%,100% 100%)}
+.sand-top,.sand-bottom{position:absolute;left:11px;width:16px;background:linear-gradient(180deg,var(--yellow),var(--orange));border-radius:9px;box-shadow:0 0 10px rgba(255,215,64,.25)}
+.sand-top{top:9px;height:17px;animation:sandTop 3.2s ease-in-out infinite}
+.sand-bottom{bottom:9px;height:6px;animation:sandBottom 3.2s ease-in-out infinite}
+.sand-stream{position:absolute;left:18px;top:25px;width:3px;height:14px;background:var(--yellow);border-radius:4px;animation:sandStream 3.2s ease-in-out infinite}
+@keyframes hourTurn{0%,82%{transform:rotate(0)}100%{transform:rotate(180deg)}}
+@keyframes sandTop{0%{height:18px;opacity:1}70%{height:2px;opacity:.45}100%{height:18px;opacity:1}}
+@keyframes sandBottom{0%{height:5px}70%{height:20px}100%{height:5px}}
+@keyframes sandStream{0%,70%{opacity:1}82%,100%{opacity:0}}
+.dc-timer-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin:10px 0}
+.dc-timer-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--yellow),var(--orange),var(--pink));transition:width .5s}
+.dc-hint-card{margin-top:12px;border:2px solid rgba(255,215,64,.22);background:rgba(255,215,64,.07);border-radius:16px;padding:14px;color:var(--text2)}
+.dc-line-lab{margin-top:18px}
+.dc-line{display:grid;grid-template-columns:42px 1fr;gap:10px;align-items:start;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.035);border-radius:14px;padding:10px 12px;margin:8px 0;cursor:pointer;font-family:var(--mono);font-size:14px}
+.dc-line:hover{border-color:var(--cyan);background:rgba(64,224,208,.07)}
+.dc-line-num{color:var(--text3);text-align:right}
+.dc-teach{margin-top:12px;border:2px solid rgba(64,224,208,.2);background:rgba(64,224,208,.06);border-radius:18px;padding:16px;color:var(--text2)}
+.dc-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.dc-tab{border:2px solid rgba(91,141,238,.22);background:rgba(91,141,238,.08);color:var(--text);border-radius:999px;padding:9px 16px;font-weight:900;cursor:pointer}
+.dc-tab.active{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#07131f}
+.dc-mini-output{margin-top:12px}
+
+
+/* Right-side line explanation panel for Design Challenge */
+.dc-reason-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 340px;
+  gap:18px;
+  align-items:start;
+  margin-top:18px;
+}
+.dc-teach{
+  min-height:260px;
+  position:sticky;
+  top:88px;
+  border:2px solid rgba(64,224,208,.26);
+  background:linear-gradient(135deg,rgba(64,224,208,.10),rgba(91,141,238,.06));
+  border-radius:20px;
+  padding:20px;
+  color:var(--text2);
+  box-shadow:0 16px 38px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.dc-teach strong{
+  display:block;
+  color:var(--cyan);
+  font-size:14px;
+  letter-spacing:.9px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.dc-teach code{
+  display:block;
+  white-space:pre-wrap;
+  word-break:break-word;
+  background:rgba(5,8,18,.65);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:13px;
+  padding:12px;
+  color:#fff7cf;
+  font-family:var(--mono);
+  font-size:14px;
+  margin:10px 0 12px;
+}
+.dc-teach p{
+  margin:0;
+  color:var(--text2);
+  font-size:16px;
+  line-height:1.65;
+}
+.dc-teach .dc-panel-title{
+  color:var(--yellow);
+  font-weight:900;
+  font-size:18px;
+  margin-bottom:10px;
+}
+.dc-line.active{
+  border-color:var(--cyan);
+  background:rgba(64,224,208,.10);
+  box-shadow:0 0 0 2px rgba(64,224,208,.08);
+}
+@media(max-width:880px){
+  .dc-reason-grid{grid-template-columns:1fr}
+  .dc-teach{position:relative;top:auto}
+}
+
+
+/* Moving right-side explanation panel */
+.dc-reason-grid{
+  position:relative;
+}
+.dc-teach{
+  position:relative!important;
+  top:auto!important;
+  transition:transform .28s ease, border-color .25s ease, box-shadow .25s ease;
+  will-change:transform;
+}
+.dc-teach.following-line{
+  border-color:rgba(255,215,64,.42);
+  box-shadow:0 18px 42px rgba(0,0,0,.28),0 0 24px rgba(255,215,64,.10),inset 0 1px 0 rgba(255,255,255,.08);
+}
+@media(max-width:880px){
+  .dc-teach{transform:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -893,12 +1040,37 @@ function pQ(id,sel){
   document.getElementById('qf-'+id).innerHTML=qfb(id,sel)
 }
 
+
+
+// Prompt-applied practice helpers: hints, check, try again, reveal. Student-facing output stays outside explanation boxes.
+const PDATA={};
+function P(id,hints,reveal,explain,output,correct){PDATA[id]={hints,reveal,explain,output:output||'',correct,tries:0,hintsSeen:{}};return ''}
+function normP(v){return String(v||'').trim().replace(/\r\n/g,'\n').replace(/[ \t]+$/gm,'')}
+function pControls(id,mode){return `<div class="practice-actions"><button class="btn btn-sm btn-blue" onclick="checkP('${id}','${mode}')">Check Answer</button><button class="btn btn-sm btn-ghost" onclick="tryP('${id}')">Try Again</button><button class="btn btn-sm btn-ghost" onclick="hintP('${id}',1)">Hint 1</button><button class="btn btn-sm btn-ghost" onclick="hintP('${id}',2)">Hint 2</button><button class="btn btn-sm btn-ghost" onclick="hintP('${id}',3)">Hint 3</button><button class="btn btn-sm btn-pink" id="rev-${id}" onclick="revealP('${id}')" disabled>Reveal Answer</button></div><div id="hint-${id}"></div><div id="fb-${id}" class="pfb"></div>`}
+function pCard(type,title,prompt,body,id,mode){return `<div class="practice-card" id="pc-${id}"><span class="practice-type">${type}</span><h4>${title}</h4><p>${prompt}</p>${body}${pControls(id,mode)}</div>`}
+function hintP(id,n){const d=PDATA[id];if(!d)return;d.hintsSeen[n]=true;document.getElementById(`hint-${id}`).innerHTML=`<div class="hint-box"><strong>Hint ${n}:</strong> ${d.hints[n-1]}</div>`;if(Object.keys(d.hintsSeen).length>=3 || d.tries>=2){const r=document.getElementById(`rev-${id}`);if(r)r.disabled=false}}
+function tryP(id){const fb=document.getElementById(`fb-${id}`),h=document.getElementById(`hint-${id}`);if(fb)fb.innerHTML='';if(h)h.innerHTML='';document.querySelectorAll(`#pc-${id} textarea,#pc-${id} input`).forEach(x=>x.value='');document.querySelectorAll(`#pc-${id} select`).forEach(x=>x.value='');const b=document.getElementById(`build-${id}`);if(b)b.innerHTML=''}
+function revealP(id){const d=PDATA[id];if(!d)return;document.getElementById(`fb-${id}`).innerHTML=`<div class="qfb qok"><strong>Reveal.</strong><div style="white-space:pre-wrap;font-family:var(--mono);margin-top:8px">${escHTML(d.reveal)}</div><p>${d.explain}</p>${d.output?simpleOutputDemo([],d.output,'Python output'):''}</div>`}
+function addPBlock(id,txt){const b=document.getElementById(`build-${id}`);const el=document.createElement('span');el.className='p-block';el.textContent=txt;el.dataset.v=txt;el.onclick=()=>el.remove();b.appendChild(el)}
+function checkP(id,mode){const d=PDATA[id];if(!d)return;d.tries++;if(d.tries>=2){const r=document.getElementById(`rev-${id}`);if(r)r.disabled=false}let ok=false;
+ if(mode==='type'){const v=normP(document.getElementById(`in-${id}`).value);ok=d.correct.map(normP).includes(v)}
+ if(mode==='inputs'){ok=d.correct.every((alts,i)=>alts.map(x=>String(x).toLowerCase()).includes(String(document.getElementById(`${id}-i${i}`).value||'').trim().toLowerCase()))}
+ if(mode==='selects'){ok=d.correct.every((ans,i)=>document.getElementById(`${id}-s${i}`).value===ans)}
+ if(mode==='code'){const v=document.getElementById(`code-${id}`).value;ok=d.correct.every(r=>new RegExp(r,'i').test(v))}
+ if(mode==='order'){const got=[...document.querySelectorAll(`#build-${id} .p-block`)].map(x=>x.dataset.v);ok=JSON.stringify(got)===JSON.stringify(d.correct)}
+ if(mode==='debug'){const reason=document.getElementById(`${id}-reason`).value;const fix=document.getElementById(`${id}-fix`).value;ok=reason===d.correct.reason && d.correct.patterns.every(r=>new RegExp(r,'i').test(fix))}
+ const fb=document.getElementById(`fb-${id}`);if(ok){addXP(8);fb.innerHTML=`<div class="qfb qok"><strong>Correct.</strong> ${d.explain}${d.output?simpleOutputDemo([],d.output,'Python output'):''}</div>`}else{fb.innerHTML=`<div class="qfb qno"><strong>Not quite.</strong> Use the hints to narrow the logic. The answer depends on line order, value movement, or the specific error Python reports.</div>`}}
+function simpleOutputDemo(codeLines, output, label='Python output'){
+  const isError=/Error|Traceback|invalid syntax|not defined|expected/i.test(output);let value;
+  if(isError){value=`<span class="screen-error">${escHTML(output)}</span>`}else{value=`<span class="screen-value">${String(output).split(/\n/).map(line=>`<span class="screen-line">${escHTML(line)}</span>`).join('')}</span>`}
+  const code=codeLines&&codeLines.length?cS(codeLines):'';return `<div class="output-demo compact-output">${code}<div class="output-label-row"><div class="screen-label">${escHTML(label)}</div></div><div class="monitor-wrap"><div class="monitor">${value}</div></div></div>`}
+
 // ══════════════════════════════════════
 // OUTPUT DESIGN RULE: use outputDemo(...) for visible Python output instead of inline # shows comments.
 // STATION CONTENT (Discovery-first)
 // ══════════════════════════════════════
 function getStation(i){return[st0,st1,st2,st3,st4,st5,st6,st7,st8,st9,st10,st11][i]()}
-function initSt(i){if(i===3)initSt3();if(i===4)initSt4()}
+function initSt(i){if(i===3)initSt3();if(i===4)initSt4();if(i===10)initDesignChallenge()}
 
 
 function legend(){return `<div class="side-legend"><h5>Code key</h5>
@@ -1364,6 +1536,16 @@ function st4(){return`
 <div class="teach green"><h3>🗺️ Step-by-Step Execution Tracer</h3><p>Click "Next Step" and watch Python jump between functions.</p>
 <div class="two"><div id="eC"></div><div><div class="out" id="eO" style="min-height:180px"><div class="out-label">Output</div><span style="color:var(--text3)">Waiting...</span></div><div id="eE" style="margin-top:14px;padding:20px;background:rgba(255,255,255,0.02);border:2px solid var(--border);border-radius:14px;min-height:70px;font-size:17px;color:var(--text2)">Click Next Step →</div></div></div>
 <div style="margin-top:20px;display:flex;gap:10px"><button class="btn btn-blue btn-sm" onclick="eN()">Next Step →</button><button class="btn btn-ghost btn-sm" onclick="eR()">↺ Reset</button></div></div>
+
+
+<div class="teach blue"><h3>🧠 Execution Practice Lab</h3><p>Use these checks to prove the journey, not memorize it. Predict first. The Python output appears only after you check or reveal.</p></div>
+${P('ej_out',['Find the call that starts the program.','helper() runs only when main() reaches it.','The helper prints between Start and End.'],'Start\nHelping\nEnd','Python starts main(), jumps into helper(), then returns to main().','Start\nHelping\nEnd',['Start\nHelping\nEnd'])}
+${pCard('Type the Output','Type the exact output','Write the three lines exactly as they appear.', cS(['def main():','    print("Start")','    helper()','    print("End")','','def helper():','    print("Helping")','','main()']) + '<textarea id="in-ej_out" placeholder="Type the output here"></textarea>', 'ej_out','type')}
+${P('ej_build',['Start with the first print inside main.','helper() causes a jump into helper.','After helper finishes, Python returns to main and prints End.'],'print("Start") → helper() call → print("Helping") → return to main → print("End")','The call to helper() is a temporary jump. It does not erase the rest of main().','', ['print("Start")','helper() call','print("Helping")','return to main','print("End")'])}
+${pCard('Build the Path','Build the execution path','Click the blocks in the order Python executes them. Click a placed block to remove it.', '<div><span class="p-block" onclick="addPBlock(\'ej_build\',\'print(&quot;Start&quot;)\')">print("Start")</span><span class="p-block" onclick="addPBlock(\'ej_build\',\'helper() call\')">helper() call</span><span class="p-block" onclick="addPBlock(\'ej_build\',\'print(&quot;Helping&quot;)\')">print("Helping")</span><span class="p-block" onclick="addPBlock(\'ej_build\',\'return to main\')">return to main</span><span class="p-block" onclick="addPBlock(\'ej_build\',\'print(&quot;End&quot;)\')">print("End")</span></div><div class="p-build" id="build-ej_build"></div>', 'ej_build','order')}
+${P('ej_fix',['A definition is only stored.','A function body runs when the function is called.','A lower helper can run if Python has already read its definition before the call happens.'],'A lower function can run because Python reads/stores the definitions before main() is called.','Correct. The important question is not “higher or lower?” It is “has Python reached the definition before the call happens?”','',['A lower function can run because Python reads/stores the definitions before main() is called.'])}
+${pCard('Fix the Mistake','Correct the mistaken explanation','Mistake: “do_work() cannot run because it is written lower than main().” Rewrite the correct idea in your own words.', '<textarea id="in-ej_fix" placeholder="Write the corrected explanation here"></textarea>', 'ej_fix','type')}
+
 `}
 
 function initSt4(){eR()}
@@ -1379,10 +1561,33 @@ function st5(){return`
 <p><strong>Argument</strong> = the value you send. <strong>Parameter</strong> = the variable inside that catches it.</p>
 <div class="conveyor"><div class="cv">"Maya"</div><div class="cva">→→→</div><div style="padding:10px 20px;background:rgba(155,109,255,0.1);border:2px solid var(--purple);border-radius:10px;color:var(--purple);font-weight:700;font-family:var(--mono)">greet(name)</div><div class="cva">→</div><div style="color:var(--green);font-weight:700;font-size:17px;font-family:var(--mono)">name = "Maya" ✓</div></div></div>
 
-${Q('s5q1','In <code>calc(100, 0.08, 5)</code>, the 2nd parameter receives:',
-  ['100','0.08','5','Nothing'],1,
-  ['100 → 1st parameter.','Correct! By position: 1st arg→1st param, 2nd→2nd, 3rd→3rd.','5 → 3rd parameter.','It does receive 0.08.'],
-  'Arguments match parameters by POSITION. Count left to right.')}
+${Q('s5q1','A checkout program is giving the wrong final price. Look carefully at the parameter order and the function call. What is the best fix?',
+  [
+    'Change the function call to <code>calc_total(100, 5, 0.08)</code> so <code>discount</code> receives 5 and <code>tax_rate</code> receives 0.08.',
+    'Change the formula to <code>subtotal + discount - tax_rate</code> because the call already sends the values correctly.',
+    'Change the parameter name <code>discount</code> to <code>coupon</code> because the name is causing the math error.',
+    'Use <code>print(total)</code> instead of <code>return total</code> so Python can display the corrected price.'
+  ],0,
+  [
+    'Correct. The definition expects <code>subtotal, discount, tax_rate</code>. The call sends values by position, so the discount should be the second argument and the tax rate should be the third argument.',
+    'Not quite. The formula is reasonable. The problem is that the values are entering the wrong parameter positions.',
+    'Not quite. Renaming the parameter does not fix which value gets sent into that position.',
+    'Not quite. <code>print()</code> only displays. It does not fix the argument order or make the calculation reusable.'
+  ],
+  'Trace the values by position first. In this function, the first argument becomes <code>subtotal</code>, the second becomes <code>discount</code>, and the third becomes <code>tax_rate</code>.',
+  ['def calc_total(subtotal, discount, tax_rate):','    total = subtotal + (subtotal * tax_rate) - discount','    return total','','answer = calc_total(100, 0.08, 5)','print(answer)'])}
+
+
+<div class="teach blue"><h3>🧪 Parameters & Arguments Practice</h3><p>Remember: the parameter is the temporary name inside the function. The argument is the real value sent into the call.</p></div>
+${P('pa_label',['Look at the definition first.','The placeholder is inside def greet(...).','The real value is inside greet("Mina").'],'function name | parameter | argument | function call','You labeled the definition parts and the call parts correctly.','',['function name','parameter','argument','function call'])}
+${pCard('Dropdown Labels','Label the code parts','Choose the correct label for each part.', cS(['def greet(name):','    print("Hello", name)','','greet("Mina")']) + '<div class="p-row"><strong>greet in def greet(name)</strong><select class="p-select" id="pa_label-s0"><option></option><option>function name</option><option>parameter</option><option>argument</option><option>function call</option></select></div><div class="p-row"><strong>name in def greet(name)</strong><select class="p-select" id="pa_label-s1"><option></option><option>function name</option><option>parameter</option><option>argument</option><option>function call</option></select></div><div class="p-row"><strong>"Mina"</strong><select class="p-select" id="pa_label-s2"><option></option><option>function name</option><option>parameter</option><option>argument</option><option>function call</option></select></div><div class="p-row"><strong>greet("Mina")</strong><select class="p-select" id="pa_label-s3"><option></option><option>function name</option><option>parameter</option><option>argument</option><option>function call</option></select></div>', 'pa_label','selects')}
+${P('pa_fill',['There are two parameters.','Each parameter needs one argument.','Send 4, then 5.'],'multiply(4, 5)','Arguments match parameters by position: a receives 4 and b receives 5.','20', [['4'],['5']])}
+${pCard('Fill the Arguments','Send values into parameters','Fill the call so the function has both values.', '<div class="ccode">def multiply(a, b):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(a * b)<br><br>multiply(<input class="p-input" id="pa_fill-i0">, <input class="p-input" id="pa_fill-i1">)</div>', 'pa_fill','inputs')}
+${P('pa_output',['word receives "Code".','times receives 3.','The function prints the word three times as one string.'],'CodeCodeCode','The argument "Code" travels into word, and 3 travels into times.','CodeCodeCode',['CodeCodeCode'])}
+${pCard('Type the Output','Predict the screen','Type exactly what appears.', cS(['def repeat(word, times):','    print(word * times)','','repeat("Code", 3)']) + '<textarea id="in-pa_output"></textarea>', 'pa_output','type')}
+${P('pa_code',['Use two parameters.','The body should print name and age.','Start with def introduce(name, age):'],'def introduce(name, age):\n    print(name, age)','The function receives two values and displays both.','',['def\\s+introduce\\s*\\(\\s*name\\s*,\\s*age\\s*\\)\\s*:','print\\s*\\(\\s*name\\s*,\\s*age\\s*\\)'])}
+${pCard('Write Code','Write a two-parameter function','Write a function called introduce that takes name and age and prints both.', '<textarea id="code-pa_code"></textarea>', 'pa_code','code')}
+
 `}
 
 function st6(){return`
@@ -1392,6 +1597,18 @@ ${cS(['def double(n):','    return n * 2','','result = double(double(3))','print
 ${Q('s6q1','What is printed?',['6','12','9','Error; can\'t nest calls'],1,
   ['That\'s just double(3). But we pass THAT into double again!','Correct! Inner first: double(3)→6. Outer: double(6)→12. Inside-out!','Would be 3×3. double does ×2.','Nesting works perfectly!'],
   'Nested calls: evaluate from INSIDE OUT.')}
+
+
+<div class="teach gold"><h3>🔁 Return Value Practice</h3><p><code>return</code> sends a value back. The variable stores it only when the call is assigned, like <code>answer = function_call()</code>.</p></div>
+${P('rv_none',['The first print is inside the function.','The function has no return line.','result stores None, then the final print displays None.'],'5\nResult is: None','print() displays 5, but it does not send 5 back. Without return, the call gives back None.','5\nResult is: None',['5\nResult is: None'])}
+${pCard('Type the Output','Why does None appear?','Type exactly what appears on the screen.', cS(['def add(a, b):','    print(a + b)','','result = add(2, 3)','print("Result is:", result)']) + '<textarea id="in-rv_none"></textarea>', 'rv_none','type')}
+${P('rv_fill',['The caller needs a value.','print would only display the value.','Use return.'],'return a * b','return sends the product back so answer can store it.','20', [['return']])}
+${pCard('Fill the Keyword','Make the value store','Fill the missing keyword.', '<div class="ccode">def multiply(a, b):<br>&nbsp;&nbsp;&nbsp;&nbsp;<input class="p-input" id="rv_fill-i0"> a * b<br><br>answer = multiply(4, 5)<br>print(answer)</div>', 'rv_fill','inputs')}
+${P('rv_choose',['Use print when the human only needs to see it.','Use return when the program needs to reuse it.','A later calculation needs return.'],'return total','The total must be delivered back to the caller so another line can use it.','',['return total'])}
+${pCard('Decision','Print or return?','You need to calculate total and use it later. Type the better body line.', '<textarea id="in-rv_choose"></textarea>', 'rv_choose','type')}
+${P('rv_code',['Use a parameter called number.','The function should not print.','Return number * number.'],'def square(number):\n    return number * number','This function calculates quietly and sends the answer back.','',['def\\s+square\\s*\\(\\s*number\\s*\\)\\s*:','return\\s+number\\s*\\*\\s*number'])}
+${pCard('Write Code','Return a value','Write a function called square that takes number and returns number * number.', '<textarea id="code-rv_code"></textarea>', 'rv_code','code')}
+
 `}
 
 function st7(){return`
@@ -1401,6 +1618,16 @@ ${cS(['def set_value():','    x = 42','','set_value()','','print(x)'])}
 ${Q('s7q1','What happens when line 6 runs?',['Prints 42','Prints None','NameError: x is not defined','Prints 0'],2,
   ['x was born inside the function; it died when the function ended.','x doesn\'t even exist outside the function.','Correct! x is LOCAL to set_value(). When the function ended, x was destroyed. Outside, it doesn\'t exist.','x was never 0.'],
   'Where was x born? Inside the function. It lives and dies there.')}
+
+
+<div class="teach purple"><h3>🌐 Scope Practice</h3><p>Scope is about where a variable lives. A local variable is born inside a function and disappears when the function finishes. A global variable lives outside functions.</p></div>
+${P('sc_output',['Inside the function, Python uses the local message.','Outside the function, Python uses the global message.','The local assignment does not change the global variable.'],'Local\nGlobal','The function has its own local message. The outside message stays Global.','Local\nGlobal',['Local\nGlobal'])}
+${pCard('Type the Output','Local vs global output','Type exactly what appears.', cS(['message = "Global"','','def show_message():','    message = "Local"','    print(message)','','show_message()','print(message)']) + '<textarea id="in-sc_output"></textarea>', 'sc_output','type')}
+${P('sc_sort',['Outside function means global.','Inside function means local.','Printed output is not a variable location.'],'score = global, bonus = local, total = local','score is outside; bonus and total are inside the function.','',['global','local','local'])}
+${pCard('Dropdown Labels','Where does each variable live?','Choose local or global.', cS(['score = 10','','def add_bonus():','    bonus = 5','    total = score + bonus','    print(total)']) + '<div class="p-row"><strong>score</strong><select class="p-select" id="sc_sort-s0"><option></option><option>global</option><option>local</option></select></div><div class="p-row"><strong>bonus</strong><select class="p-select" id="sc_sort-s1"><option></option><option>global</option><option>local</option></select></div><div class="p-row"><strong>total</strong><select class="p-select" id="sc_sort-s2"><option></option><option>global</option><option>local</option></select></div>', 'sc_sort','selects')}
+${P('sc_fix',['Same name can exist in different scopes.','The function creates a local x.','The global x outside is unchanged.'],'The function creates a local x, so the global x stays unchanged.','Correct. This is not a print problem; it is scope behavior.','',['The function creates a local x, so the global x stays unchanged.'])}
+${pCard('Fix the Mistake','Correct the explanation','Mistake: “The function changed the global x.” Rewrite the correct idea.', '<textarea id="in-sc_fix"></textarea>', 'sc_fix','type')}
+
 `}
 
 function st8(){return`
@@ -1415,30 +1642,355 @@ ${Q('s8q2','Output: 5, then "Answer: None". How to fix?',['Change print(a+b) to 
   ['Correct! return sends the value back so result can store it.','Bad practice.','Defeats the purpose.','Hides the bug.'],
   'print() is for humans to see. return is for code to use.',
   ['def add(a, b):','    print(a + b)','','result = add(2, 3)','print("Answer:", result)'])}
+
+
+<div class="teach blue"><h3>🧯 Debugging Challenges</h3><p>The error output box shows only the Python-style message. Use the cause dropdown and corrected code box to fix each one.</p></div>
+${P('db_colon',['Look at the def line.','A function header opens a block.','Add a colon after the parentheses.'],'def greet(name):\n    print("Hello", name)\n\ngreet("Lina")','A colon tells Python that the indented function body begins next.','', {reason:'Missing colon',patterns:['def\\s+greet\\s*\\(\\s*name\\s*\\)\\s*:']})}
+${pCard('Debug','Missing colon','Choose the cause and fix the code.', cS(['def greet(name)','    print("Hello", name)','','greet("Lina")']) + simpleOutputDemo([], 'SyntaxError: expected \':\'', 'Python output / error message') + '<div class="p-row"><select class="p-select" id="db_colon-reason"><option></option><option>Missing colon</option><option>Wrong indentation</option><option>Missing argument</option></select></div><textarea id="db_colon-fix"></textarea>', 'db_colon','debug')}
+${P('db_indent',['Look after the colon.','The function body must move right.','Indent the print line.'],'def greet(name):\n    print("Hello", name)','Indented lines belong inside the function body.','', {reason:'Wrong indentation',patterns:['def\\s+greet\\s*\\(\\s*name\\s*\\)\\s*:\\s*\\n\\s+print']})}
+${pCard('Debug','Wrong indentation','Choose the cause and fix the code.', cS(['def greet(name):','print("Hello", name)']) + simpleOutputDemo([], 'IndentationError: expected an indented block', 'Python output / error message') + '<div class="p-row"><select class="p-select" id="db_indent-reason"><option></option><option>Missing colon</option><option>Wrong indentation</option><option>Missing import</option></select></div><textarea id="db_indent-fix"></textarea>', 'db_indent','debug')}
+${P('db_arg',['The function has one parameter.','The call has empty parentheses.','Send a value such as "Lina".'],'greet("Lina")','The argument fills the parameter name.','', {reason:'Missing argument',patterns:['greet\\s*\\(\\s*"?\\w+"?\\s*\\)']})}
+${pCard('Debug','Missing argument','Choose the cause and fix the call.', cS(['def greet(name):','    print("Hello", name)','','greet()']) + simpleOutputDemo([], 'TypeError: greet() missing 1 required positional argument: \'name\'', 'Python output / error message') + '<div class="p-row"><select class="p-select" id="db_arg-reason"><option></option><option>Missing argument</option><option>Missing colon</option><option>Wrong indentation</option></select></div><textarea id="db_arg-fix"></textarea>', 'db_arg','debug')}
+${P('db_import',['math is a module.','Python does not know module names until import.','Add import math before using math.sqrt.'],'import math\nanswer = math.sqrt(25)\nprint(answer)','Import brings in the module tools before you use dot notation.','', {reason:'Missing import',patterns:['import\\s+math','math\\.sqrt\\(25\\)']})}
+${pCard('Debug','Missing import','Choose the cause and fix the code.', cS(['answer = math.sqrt(25)','print(answer)']) + simpleOutputDemo([], 'NameError: name \'math\' is not defined', 'Python output / error message') + '<div class="p-row"><select class="p-select" id="db_import-reason"><option></option><option>Missing import</option><option>Missing argument</option><option>Scope error</option></select></div><textarea id="db_import-fix"></textarea>', 'db_import','debug')}
+
 `}
 
 function st9(){return`
 <div class="teach green"><h3>📦 Modules: Python's Toolkits</h3>
 <p>A <strong>module</strong> is a file of pre-built Python code. Import it, then use <strong>dot notation</strong>:</p>
-${cS(['import math','print(math.sqrt(16))  # 4.0','print(math.pi)        # 3.14159...','','import random','print(random.randint(1, 10))  # random number 1-10'])}
+${cS(['import math','print(math.sqrt(16))','print(math.pi)','','import random','print(random.randint(1, 10))'])}
 <p><code>math.pi</code> is a <strong>variable</strong>, not a function; no parentheses!</p>
 <div style="margin-top:20px"><button class="btn btn-sm btn-pink" onclick="document.getElementById('dR').textContent=Math.floor(Math.random()*10)+1">🎲 Roll random.randint(1, 10)!</button><div id="dR" style="margin-top:12px;font-family:var(--mono);font-size:32px;font-weight:800;color:var(--yellow);min-height:48px"></div></div></div>
 
 ${Q('s9q1','How to call sqrt from math?',['sqrt(16)','math.sqrt(16)','math(sqrt,16)','import sqrt'],1,
   ['Need the module prefix.','Correct! module.function() is the pattern.','Invalid syntax.','import loads modules, doesn\'t call functions.'],
   'Dot notation = address: math.sqrt means "sqrt inside math."')}
+
+
+<div class="teach blue"><h3>🧪 Module Practice</h3><p>Dot notation follows this pattern: <code>module.function(argument)</code>. Import first, then use the module tool.</p></div>
+${P('mo_label',['The module comes after import.','The function comes after the dot.','The value inside parentheses is the argument.'],'math = module, sqrt = module function, 25 = argument','You labeled the address correctly: module.function(argument).','',['module','module function','argument'])}
+${pCard('Dropdown Labels','Label module parts','Choose the correct label for each part.', cS(['import math','','answer = math.sqrt(25)','print(answer)']) + '<div class="p-row"><strong>math</strong><select class="p-select" id="mo_label-s0"><option></option><option>module</option><option>module function</option><option>argument</option></select></div><div class="p-row"><strong>sqrt</strong><select class="p-select" id="mo_label-s1"><option></option><option>module</option><option>module function</option><option>argument</option></select></div><div class="p-row"><strong>25</strong><select class="p-select" id="mo_label-s2"><option></option><option>module</option><option>module function</option><option>argument</option></select></div>', 'mo_label','selects')}
+${P('mo_out',['sqrt means square root.','The square root of 25 is 5.','Python shows it as 5.0.'],'5.0','math.sqrt(25) returns 5.0, and print displays it.','5.0',['5.0'])}
+${pCard('Type the Output','Predict the screen','Type exactly what appears.', cS(['import math','','answer = math.sqrt(25)','print(answer)']) + '<textarea id="in-mo_out"></textarea>', 'mo_out','type')}
+${P('mo_import',['The code uses math.sqrt.','math is a module.','Write import math.'],'import math','The import line brings in the math module before math.sqrt is used.','', [['import math']])}
+${pCard('Fill the Import','Bring in the module','Fill the missing first line.', '<div class="ccode"><input class="p-input" id="mo_import-i0"><br><br>answer = math.sqrt(81)<br>print(answer)</div>', 'mo_import','inputs')}
+${P('mo_random',['Start with import random.','Use random.randint with 1 and 10.','Print the stored result.'],'import random\nnumber = random.randint(1, 10)\nprint(number)','The random module gives access to randint.','',['import\\s+random','random\\.randint\\(\\s*1\\s*,\\s*10\\s*\\)','print\\s*\\('])}
+${pCard('Write Code','Build a random-number program','Write code that imports random, gets a number from 1 to 10, and prints it.', '<textarea id="code-mo_random"></textarea>', 'mo_random','code')}
+
 `}
 
 function st10(){return`
-<div class="teach gold"><h3>🏗️ You're the Architect Now</h3>
-<p>Design a modular pay calculator. Think about which functions you need and what each should do.</p></div>
-${Q('s10q1','Which function should control the overall program flow?',['get_rate()','calc_pay()','main()','show_results()'],2,
-  ['Only handles one input.','Only one calculation.','Correct! main() orchestrates: get inputs → calculate → display.','Only the final display.'],
-  'main() is the boss who calls workers in order.')}
-${Q('s10q2','calc_gross_pay() uses print() instead of return. What breaks?',['Nothing','main() can\'t pass the value forward','Crash','Calculated twice'],1,
-  ['There IS a problem.','Correct! Print displays then the value is gone. main() gets None.','Doesn\'t crash; just wrong results.','Only calculated once, but lost.'],
-  'If other functions need the value, you MUST return it.')}
+<div class="dc-studio">
+  <div class="dc-hero">
+    <h3>🏗️ Design Challenge Studio</h3>
+    <p>Keep the structure you already built. This station now becomes a real coding studio: type the code, test the structure, get individualized correction, unlock timed hints, reveal only after effort, then click each line to understand the reasoning.</p>
+    <div class="dc-blueprint">
+      <div class="dc-node"><b>get inputs</b><small>Collect or provide values.</small></div>
+      <div class="dc-node"><b>calculate / build</b><small>Use return when another line needs the result.</small></div>
+      <div class="dc-node"><b>display</b><small>Use print when the job is to show something.</small></div>
+      <div class="dc-node"><b>main</b><small>The boss function controls the journey.</small></div>
+    </div>
+  </div>
+
+  <div class="dc-tabs">
+    <button class="dc-tab active" id="dcTabPay" onclick="dcLoadChallenge('pay')">Challenge 1: Pay Calculator</button>
+    <button class="dc-tab" id="dcTabBadge" onclick="dcLoadChallenge('badge')">Challenge 2: Badge Message</button>
+  </div>
+
+  <div class="teach blue">
+    <h3 id="dcTitle">💼 Challenge 1: Modular Pay Calculator</h3>
+    <p id="dcPrompt">Build a program with small functions. It should get hours and rate, calculate gross pay, and display the result. Use <code>return</code> for the calculation so <code>main()</code> can use the value.</p>
+
+    <div class="dc-editor-grid">
+      <div class="dc-editor-wrap">
+        <div class="dc-editor-label"><span>Code workspace</span><span id="dcMode">write + test</span></div>
+        <textarea class="dc-editor" id="dcCode" spellcheck="false"></textarea>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+          <button class="btn btn-green btn-sm" onclick="dcCheck()">Check My Program</button>
+          <button class="btn btn-blue btn-sm" onclick="dcRunPreview()">Preview Output</button>
+          <button class="btn btn-gold btn-sm" onclick="dcStartTimedHints()">⏳ Start Timed Hints</button>
+          <button class="btn btn-pink btn-sm" id="dcRevealBtn" onclick="dcReveal()" disabled>Reveal Answer</button>
+        </div>
+      </div>
+
+      <div class="dc-panel">
+        <h4>🔍 Individualized Guidance</h4>
+        <p style="font-size:15px">The scanner checks your structure and catches the exact part that needs work.</p>
+        <div class="dc-checklist" id="dcChecklist"></div>
+        <div class="dc-timer">
+          <div class="dc-timer-top">
+            <div class="hourglass-wrap"><div class="hourglass"><span class="sand-top"></span><span class="sand-stream"></span><span class="sand-bottom"></span></div></div>
+            <div>
+              <strong>Timed hint ladder</strong>
+              <p style="font-size:14px;margin:6px 0">A stronger hint unlocks every minute. Reveal opens after Hint 3 or after repeated honest checks.</p>
+            </div>
+          </div>
+          <div class="dc-timer-bar"><div class="dc-timer-fill" id="dcHintFill"></div></div>
+          <div id="dcHintStatus" style="font-size:14px;color:var(--text2)">Timer not started.</div>
+          <div id="dcHints"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dc-console" id="dcConsole"><span class="warn">Workspace ready.</span> Write your functions, then click Check My Program.</div>
+  </div>
+
+  <div class="teach purple">
+    <h3>🧠 Click-the-Line Reasoning Lab</h3>
+    <p>After you check or reveal, click any line. The lab explains what the line does, why it belongs, and how it connects to the full program.</p>
+    <div class="dc-reason-grid">
+      <div id="dcLineLab" class="dc-line-lab"></div>
+      <aside id="dcTeach" class="dc-teach"><div class="dc-panel-title">Line explanation</div><p>Click a generated line on the left. The explanation will appear here.</p></aside>
+    </div>
+  </div>
+
+  <div class="teach green">
+    <h3>✨ Architect Reflection</h3>
+    <p>Explain your design in one sentence. Mention <code>main()</code>, <code>return</code>, and <code>print</code> or display.</p>
+    <textarea id="dcReflection" style="width:100%;height:90px;background:rgba(255,255,255,0.03);border:2px solid var(--border);border-radius:14px;padding:16px;color:var(--text);font-family:var(--font);font-size:17px;resize:vertical" placeholder="Example: main() controls the program, the calculation function returns the value, and the display function prints the final result."></textarea>
+    <div style="margin-top:14px"><button class="btn btn-green btn-sm" onclick="dcCheckReflection()">Check Reflection</button></div>
+    <div id="dcReflectFb"></div>
+  </div>
+</div>
 `}
+
+
+const DC={
+  active:'pay',
+  checks:0,
+  hintTimer:null,
+  startTime:null,
+  unlocked:0,
+  data:{
+    pay:{
+      title:'💼 Challenge 1: Modular Pay Calculator',
+      prompt:'Build a program with small functions. It should get hours and rate, calculate gross pay, and display the result. Use <code>return</code> for the calculation so <code>main()</code> can use the value.',
+      starter:`def get_hours():
+    return 40
+
+def get_rate():
+    return 25
+
+# Write calc_gross_pay here
+
+
+# Write show_results here
+
+
+# Write main here
+
+
+main()`,
+      hints:[
+        'Start by making one worker function for the calculation. It should receive hours and rate.',
+        'The calculation function should return hours * rate. If it only prints, main() cannot pass the value forward.',
+        'main() should call get_hours(), get_rate(), calc_gross_pay(hours, rate), and show_results(pay) in that order.'
+      ],
+      answer:`def get_hours():
+    return 40
+
+def get_rate():
+    return 25
+
+def calc_gross_pay(hours, rate):
+    gross_pay = hours * rate
+    return gross_pay
+
+def show_results(gross_pay):
+    print("Gross pay:", gross_pay)
+
+def main():
+    hours = get_hours()
+    rate = get_rate()
+    gross_pay = calc_gross_pay(hours, rate)
+    show_results(gross_pay)
+
+main()`,
+      output:'Gross pay: 1000',
+      checks:[
+        {label:'main() controls the overall program flow',test:t=>/def\s+main\s*\(\s*\)\s*:/.test(t)&&/main\s*\(\s*\)\s*$/m.test(t)},
+        {label:'Separate functions get or provide hours and rate',test:t=>/def\s+get_hours\s*\(\s*\)\s*:/.test(t)&&/def\s+get_rate\s*\(\s*\)\s*:/.test(t)},
+        {label:'calc_gross_pay receives hours and rate as parameters',test:t=>/def\s+calc_gross_pay\s*\(\s*hours\s*,\s*rate\s*\)\s*:/.test(t)},
+        {label:'Calculation uses return so main() can store the result',test:t=>/return\s+(\w+\s*|\(?\s*)hours\s*\*\s*rate|return\s+gross_pay/.test(t)},
+        {label:'A display function prints the final result',test:t=>/def\s+show_results\s*\(/.test(t)&&/print\s*\(/.test(t)},
+        {label:'main calls the worker functions in a logical order',test:t=>/hours\s*=\s*get_hours\s*\(\s*\)/.test(t)&&/rate\s*=\s*get_rate\s*\(\s*\)/.test(t)&&/calc_gross_pay\s*\(\s*hours\s*,\s*rate\s*\)/.test(t)&&/show_results\s*\(/.test(t)}
+      ]
+    },
+    badge:{
+      title:'🎟️ Challenge 2: Badge Message Builder',
+      prompt:'Build a text-formatting program. It should get a first name and role, build one badge message, return that message, then display it. This one is not a math challenge; it practices text-building functions.',
+      starter:`def get_first_name():
+    return "Mina"
+
+def get_role:
+    return "Coder"
+
+# Write build_badge here
+
+
+# Write display_badge here
+
+
+# Write main here
+
+
+main()`,
+      hints:[
+        'This challenge formats text, so a good worker name is build_badge or format_badge.',
+        'The badge-building function needs two parameters: first_name and role.',
+        'The build function should return the message. The display function should print it.'
+      ],
+      answer:`def get_first_name():
+    return "Mina"
+
+def get_role():
+    return "Coder"
+
+def build_badge(first_name, role):
+    badge = first_name + " - " + role
+    return badge
+
+def display_badge(badge):
+    print("Badge:", badge)
+
+def main():
+    first_name = get_first_name()
+    role = get_role()
+    badge = build_badge(first_name, role)
+    display_badge(badge)
+
+main()`,
+      output:'Badge: Mina - Coder',
+      checks:[
+        {label:'get_role has correct parentheses and colon',test:t=>/def\s+get_role\s*\(\s*\)\s*:/.test(t)},
+        {label:'A builder function receives first_name and role',test:t=>/def\s+(build_badge|format_badge)\s*\(\s*first_name\s*,\s*role\s*\)\s*:/.test(t)},
+        {label:'The badge-building function returns the message',test:t=>/return\s+(badge|message|full_badge)/.test(t)},
+        {label:'A display function prints the badge',test:t=>/def\s+display_badge\s*\(/.test(t)&&/print\s*\(/.test(t)},
+        {label:'main gathers values, builds badge, and displays it',test:t=>/def\s+main\s*\(\s*\)\s*:/.test(t)&&/get_first_name\s*\(\s*\)/.test(t)&&/get_role\s*\(\s*\)/.test(t)&&/(build_badge|format_badge)\s*\(/.test(t)&&/display_badge\s*\(/.test(t)}
+      ]
+    }
+  }
+};
+
+function initDesignChallenge(){dcLoadChallenge('pay')}
+function dcLoadChallenge(kind){
+  DC.active=kind;DC.checks=0;DC.unlocked=0;DC.startTime=null;if(DC.hintTimer)clearInterval(DC.hintTimer);
+  const d=DC.data[kind];
+  const t=document.getElementById('dcTitle');if(!t)return;
+  document.getElementById('dcTabPay').classList.toggle('active',kind==='pay');
+  document.getElementById('dcTabBadge').classList.toggle('active',kind==='badge');
+  document.getElementById('dcTitle').textContent=d.title;
+  document.getElementById('dcPrompt').innerHTML=d.prompt;
+  document.getElementById('dcCode').value=d.starter;
+  document.getElementById('dcChecklist').innerHTML='';
+  document.getElementById('dcConsole').innerHTML='<span class="warn">Workspace ready.</span> Write your functions, then click Check My Program.';
+  document.getElementById('dcHints').innerHTML='';
+  document.getElementById('dcHintFill').style.width='0%';
+  document.getElementById('dcHintStatus').textContent='Timer not started.';
+  document.getElementById('dcRevealBtn').disabled=true;
+  document.getElementById('dcLineLab').innerHTML='';
+  document.getElementById('dcTeach').innerHTML='<div class="dc-panel-title">Line explanation</div><p>Click a generated line on the left. The explanation will appear here.</p>';document.getElementById('dcTeach').style.transform='';document.getElementById('dcTeach').classList.remove('following-line');
+}
+function dcText(){return document.getElementById('dcCode').value}
+function dcCheck(){
+  DC.checks++;
+  const d=DC.data[DC.active],txt=dcText();
+  let passed=0,items='',guidance=[];
+  d.checks.forEach(ch=>{
+    const ok=ch.test(txt); if(ok)passed++;
+    items+=`<div class="dc-checkitem ${ok?'ok':'no'}">${ok?'✓':'•'} ${ch.label}</div>`;
+    if(!ok)guidance.push(ch.label);
+  });
+  document.getElementById('dcChecklist').innerHTML=items;
+  const console=document.getElementById('dcConsole');
+  if(passed===d.checks.length){
+    console.innerHTML=`<span class="pass">Architect check passed.</span><br>Your program has the required structure. Preview the output, then click each line and read the right-side explanation.`;
+    addXP(20); dcBuildLineLab(txt); document.getElementById('dcRevealBtn').disabled=false;
+  }else{
+    let msg='<span class="fail">Keep designing.</span><br>';
+    if(/print\s*\(\s*hours\s*\*\s*rate\s*\)/.test(txt)||(/print\s*\(\s*.*gross.*\)/.test(txt)&&!/return/.test(txt))){
+      msg+='Your calculation appears to print instead of return. If main() needs the value, the calculation function must return it.<br>';
+    }
+    if(!/def\s+main\s*\(\s*\)\s*:/.test(txt))msg+='Add a main() function to control the overall order.<br>';
+    if(!/return/.test(txt))msg+='At least one worker function should return a value that another part of the program can use.<br>';
+    msg+='Missing or weak areas:<br>• '+guidance.join('<br>• ');
+    console.innerHTML=msg;
+    if(DC.checks>=3)document.getElementById('dcRevealBtn').disabled=false;
+  }
+}
+function dcRunPreview(){
+  const d=DC.data[DC.active],txt=dcText();
+  const ok=d.checks.every(ch=>ch.test(txt));
+  document.getElementById('dcConsole').innerHTML= ok
+    ? `<span class="pass">Predicted Python Output</span><div class="dc-mini-output">${simpleOutputDemo([],d.output,'Python output')}</div>`
+    : `<span class="warn">Preview is not reliable yet.</span><br>Fix the structure first. The scanner needs the functions and return flow before it predicts output.`;
+}
+function dcStartTimedHints(){
+  if(DC.hintTimer)clearInterval(DC.hintTimer);
+  DC.startTime=Date.now();DC.unlocked=0;document.getElementById('dcHints').innerHTML='';
+  dcTickHints();
+  DC.hintTimer=setInterval(dcTickHints,1000);
+}
+function dcTickHints(){
+  const elapsed=Math.floor((Date.now()-DC.startTime)/1000);
+  document.getElementById('dcHintFill').style.width=(Math.min(180,elapsed)/180*100)+'%';
+  const unlock=Math.min(3,Math.floor(elapsed/60)+1);
+  if(unlock>DC.unlocked){
+    DC.unlocked=unlock;
+    const d=DC.data[DC.active];
+    let html='';
+    for(let i=0;i<unlock;i++)html+=`<div class="dc-hint-card"><strong>Hint ${i+1}:</strong> ${d.hints[i]}</div>`;
+    document.getElementById('dcHints').innerHTML=html;
+    if(unlock>=3)document.getElementById('dcRevealBtn').disabled=false;
+  }
+  const remaining=DC.unlocked>=3?0:60-(elapsed%60);
+  document.getElementById('dcHintStatus').textContent=DC.unlocked>=3?'All hints unlocked. Reveal is available.':`Hint ${DC.unlocked} unlocked. Next hint in ${remaining}s.`;
+}
+function dcReveal(){
+  const d=DC.data[DC.active];
+  document.getElementById('dcCode').value=d.answer;
+  document.getElementById('dcConsole').innerHTML=`<span class="pass">Suggested solution revealed.</span><br>Now click each line on the left and read the explanation panel on the right.`;
+  document.getElementById('dcRevealBtn').disabled=false;
+  dcBuildLineLab(d.answer);
+  addXP(10);
+}
+function dcBuildLineLab(codeText){
+  const lines=codeText.split('\n');
+  document.getElementById('dcLineLab').innerHTML=lines.map((line,i)=>`<div class="dc-line" onclick="dcExplainLine(${i})"><span class="dc-line-num">${i+1}</span><span>${line?escHTML(line):' '}</span></div>`).join('');
+}
+function dcExplainLine(i){
+  const line=(document.getElementById('dcCode').value.split('\n')[i]||'').trim();
+  let msg='This blank line separates ideas so the program is easier to read.';
+  if(/^def\s+main/.test(line))msg='This defines main(), the boss function. It controls the order of the whole program.';
+  else if(/^def\s+/.test(line))msg='This defines a worker function. The body is saved and will not run until another line calls this function.';
+  else if(/^return\b/.test(line))msg='This sends a value back to the place where the function was called. Use return when another function needs the result.';
+  else if(/^print\s*\(/.test(line))msg='This displays something on the screen. It does not store the value for later.';
+  else if(/=\s*get_/.test(line))msg='This calls an input/provider function and stores the value it returns in a variable.';
+  else if(/=\s*(calc_|build_|format_)/.test(line))msg='This calls a worker function, receives the returned value, and stores it in a variable.';
+  else if(/show_|display_/.test(line))msg='This calls a display function. The job is to show the final result to the user.';
+  else if(/=/.test(line))msg='This line stores a value in a variable. The name on the left receives the result from the right side.';
+  else if(/\w+\s*\(\s*\)/.test(line))msg='This is a function call. It tells Python to run the instructions saved under that function name.';
+  const lineEls=[...document.querySelectorAll('.dc-line')];
+  lineEls.forEach((el,idx)=>el.classList.toggle('active',idx===i));
+  const teach=document.getElementById('dcTeach');
+  if(window.innerWidth>880 && lineEls[i]){
+    const y=Math.max(0,lineEls[i].offsetTop-6);
+    teach.style.transform=`translateY(${y}px)`;
+    teach.classList.add('following-line');
+  }else{
+    teach.style.transform='';
+  }
+  teach.innerHTML=`<div class="dc-panel-title">Line explanation</div><strong>Line ${i+1}</strong><code>${escHTML(line||'blank line')}</code><p>${msg}</p>`;
+}
+function dcCheckReflection(){
+  const v=(document.getElementById('dcReflection').value||'').toLowerCase();
+  const ok=v.includes('main')&&v.includes('return')&&(v.includes('print')||v.includes('display'));
+  document.getElementById('dcReflectFb').innerHTML= ok
+    ? '<div class="qfb qok"><strong>✓ Strong reflection.</strong> You connected main(), return, and display/print. That shows structural understanding.</div>'
+    : '<div class="qfb qno"><strong>Keep sharpening it.</strong> Mention what main() controls, why return is needed, and where print/display happens.</div>';
+  if(ok)addXP(8);
+}
 
 function st11(){return`
 <div class="teach purple"><h3>📝 Reflect on Your Journey</h3>
