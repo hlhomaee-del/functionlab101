@@ -444,9 +444,33 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 // ══════════════════════════════════════
 const S={xp:0,badges:[],done:[],ans:{},name:'',intake:null,phase:'welcome'};
 async function load(){try{const r=await window.storage.get('pfl4');if(r?.value)Object.assign(S,JSON.parse(r.value))}catch(e){}
+  ensureSeed();
   if(S.phase==='lab')showLab();else if(S.phase==='prereqs')showPrereqs();else if(S.phase==='intake')startIntake();else showWelcome();
   updUI();}
 async function save(){try{await window.storage.set('pfl4',JSON.stringify(S))}catch(e){}}
+
+function ensureSeed(){
+  if(!S.seed){S.seed=Math.floor(Math.random()*1000000000);save();}
+}
+function hashKey(key){
+  let h=2166136261;
+  const s=String(key)+'|'+String(S.seed||0);
+  for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}
+  return h>>>0;
+}
+function randFromKey(key){
+  let x=hashKey(key);
+  x^=x<<13;x^=x>>>17;x^=x<<5;
+  return (x>>>0)/4294967296;
+}
+function shuffleIndices(key,n){
+  const a=Array.from({length:n},(_,i)=>i);
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(randFromKey(key+':'+i)*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
 function addXP(n){S.xp+=n;save();updUI();toast(`+${n} XP`);const e=document.getElementById('xpD');if(e){e.style.transform='scale(1.4)';setTimeout(()=>e.style.transform='',350)}}
 function earnBadge(n,ic){if(S.badges.find(b=>b.n===n))return;S.badges.push({n,ic});save();updUI();confetti();const p=document.getElementById('bp');document.getElementById('bpI').textContent=ic;document.getElementById('bpT').textContent=n;p.classList.add('show');setTimeout(()=>p.classList.remove('show'),3000)}
 function fin(i){if(!S.done.includes(i)){S.done.push(i);save();updUI()}}
@@ -578,7 +602,9 @@ function startIntake(){
 
 function renderIntakeStep(){
   if(intakeStep>=INTAKE.length){finishIntake();return}
+  ensureSeed();
   const q=INTAKE[intakeStep];
+  const order=shuffleIndices('warmup-'+intakeStep,q.opts.length);
   const dots=INTAKE.map((_,i)=>`<div class="dot${i<intakeStep?' done':i===intakeStep?' active':''}"></div>`).join('');
   document.getElementById('app').innerHTML=`
   <div class="phase"><div class="wrap"><div class="challenge">
@@ -587,7 +613,7 @@ function renderIntakeStep(){
     <h2>${q.q}</h2>
     ${q.code.length ? cS(q.code) : ''}
     <div class="ch-options" id="chOpts">
-      ${q.opts.map((o,i)=>`<div class="ch-opt" onclick="pickIntake(${intakeStep},${i})">${o}</div>`).join('')}
+      ${order.map(orig=>`<div class="ch-opt" data-idx="${orig}" onclick="pickIntake(${intakeStep},${orig})">${q.opts[orig]}</div>`).join('')}
     </div>
     <div id="chFb"></div>
   </div></div></div>`;
@@ -596,10 +622,11 @@ function renderIntakeStep(){
 function pickIntake(step,sel){
   const q=INTAKE[step];
   const opts=document.querySelectorAll('#chOpts .ch-opt');
-  opts.forEach((o,i)=>{
+  opts.forEach((o)=>{
+    const orig=Number(o.dataset.idx);
     o.classList.add('done');
-    if(i===q.correct)o.classList.add('correct');
-    if(i===sel&&sel!==q.correct)o.classList.add('wrong');
+    if(orig===q.correct)o.classList.add('correct');
+    if(orig===sel&&sel!==q.correct)o.classList.add('wrong');
   });
   const ok=sel===q.correct;
   if(ok){intakeScore[q.area]=1;addXP(5)}
@@ -830,14 +857,33 @@ function handleDone(i){fin(i);earnBadge(ST[i].bdg,ST[i].bic);confetti();showLab(
 // ══════════════════════════════════════
 const QD={};
 function Q(id,q,opts,cor,rats,str,codeLs){
-  QD[id]={rats,str,cor};const dn=S.ans[id]!==undefined,pv=S.ans[id];
+  ensureSeed();
+  QD[id]={rats,str,cor};
+  const dn=S.ans[id]!==undefined,pv=S.ans[id];
+  const order=shuffleIndices('quiz-'+id,opts.length);
   let x=`<div class="quiz" id="q-${id}">`;
   if(codeLs)x+=cS(codeLs);
   x+=`<div class="quiz-q">${q}</div>`;
-  opts.forEach((o,i)=>{const cl=dn?(i===cor?'ok dn':(i===pv&&pv!==cor?'no dn':'dn')):'';x+=`<div class="qo ${cl}" onclick="pQ('${id}',${i})">${o}</div>`});
+  order.forEach((orig)=>{
+    const cl=dn?(orig===cor?'ok dn':(orig===pv&&pv!==cor?'no dn':'dn')):'';
+    x+=`<div class="qo ${cl}" data-idx="${orig}" onclick="pQ('${id}',${orig})">${opts[orig]}</div>`;
+  });
   x+=`<div id="qf-${id}">`;if(dn)x+=qfb(id,pv);x+=`</div></div>`;return x}
 function qfb(id,sel){const d=QD[id];if(!d)return'';const ok=sel===d.cor;let x=`<div class="qfb ${ok?'qok':'qno'}"><strong>${ok?'✓ Correct.':'Not quite.'}</strong> ${d.rats[sel]}</div>`;if(d.str)x+=`<div class="strat"><b>📚 Strategy:</b> ${d.str}</div>`;return x}
-function pQ(id,sel){if(S.ans[id]!==undefined)return;S.ans[id]=sel;save();const d=QD[id],ok=sel===d.cor;if(ok)addXP(10);const w=document.getElementById('q-'+id);w.querySelectorAll('.qo').forEach((o,i)=>{o.classList.add('dn');if(i===d.cor)o.classList.add('ok');if(i===sel&&sel!==d.cor)o.classList.add('no')});document.getElementById('qf-'+id).innerHTML=qfb(id,sel)}
+function pQ(id,sel){
+  if(S.ans[id]!==undefined)return;
+  S.ans[id]=sel;save();
+  const d=QD[id],ok=sel===d.cor;
+  if(ok)addXP(10);
+  const w=document.getElementById('q-'+id);
+  w.querySelectorAll('.qo').forEach((o)=>{
+    const orig=Number(o.dataset.idx);
+    o.classList.add('dn');
+    if(orig===d.cor)o.classList.add('ok');
+    if(orig===sel&&sel!==d.cor)o.classList.add('no');
+  });
+  document.getElementById('qf-'+id).innerHTML=qfb(id,sel)
+}
 
 // ══════════════════════════════════════
 // STATION CONTENT (Discovery-first)
